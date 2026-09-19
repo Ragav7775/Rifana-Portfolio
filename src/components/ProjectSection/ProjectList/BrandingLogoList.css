@@ -1,0 +1,278 @@
+/* ============================================================
+   BrandingList.css
+   Common Template A: Branding & Logo Project Grid & Cards
+   Square 1:1 Media Presentation with Configurable Interaction
+   ============================================================ */
+
+.branding-list-section {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+/* ── 4-Column / 3-Column / 2-Column Responsive CSS Grid ─────── */
+.branding-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    row-gap: clamp(2rem, 3.5vw, 3.5rem);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ── Individual Branding / Logo Card ────────────────────────── */
+.branding-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background: transparent;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ── Card Media Box (Rounded White Frame with 1:1 Square Ratio) ── */
+.branding-card-media-link,
+.branding-card-media-btn {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    outline: none;
+    border-radius: 16px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.branding-card-media-link:focus-visible .branding-card-media,
+.branding-card-media-btn:focus-visible .branding-card-media {
+    outline: 2px solid var(--color-primary, #07553D);
+    outline-offset: 3px;
+}
+
+.branding-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Strict 1:1 Square for BOTH Branding and Logo */
+    background: #ffffff;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 16px;
+    padding: clamp(0.75rem, 1.8vw, 1.75rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.branding-card:hover .branding-card-media {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-primary, #07553D);
+}
+
+.branding-card-img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.branding-card:hover .branding-card-img {
+    transform: scale(1.04);
+}
+
+/* ── Card Info & Typography ───────────────────────────────── */
+.branding-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.branding-card-title {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.branding-card-title-link,
+.branding-card-title-btn {
+    color: inherit;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-align: left;
+    transition: color 0.2s ease;
+    display: block;
+}
+
+.branding-card-title-link:hover,
+.branding-card-title-btn:hover,
+.branding-card-title-link:focus-visible,
+.branding-card-title-btn:focus-visible {
+    color: var(--color-primary, #07553D);
+    outline: none;
+}
+
+/* ── Industry Label & Value ───────────────────────────────── */
+.branding-card-industry {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+    line-height: 1.35;
+    margin-top: 0.15rem;
+}
+
+.branding-industry-label {
+    font-weight: 700;
+    color: #111111;
+}
+
+.branding-industry-value {
+    font-weight: 700;
+    color: var(--color-gold-dark, #987400);
+}
+
+/* ── "→ View Details" Action Link / Button ────────────────── */
+.branding-view-details-link,
+.branding-view-details-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.35rem;
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(0.85rem, 0.95vw, 0.95rem);
+    font-weight: 700;
+    color: var(--color-gold-dark, #987400);
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.22s ease, transform 0.22s ease;
+    width: fit-content;
+}
+
+.branding-view-details-arrow {
+    display: inline-block;
+    transition: transform 0.22s ease;
+}
+
+.branding-view-details-link:hover,
+.branding-view-details-btn:hover,
+.branding-view-details-link:focus-visible,
+.branding-view-details-btn:focus-visible {
+    color: var(--color-primary, #07553D);
+    outline: none;
+}
+
+.branding-card:hover .branding-view-details-arrow,
+.branding-view-details-link:hover .branding-view-details-arrow,
+.branding-view-details-btn:hover .branding-view-details-arrow {
+    transform: translateX(4px);
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS (Mandatory: 4 Desktop / 3 Tablet / 2 Mobile)
+   ============================================================ */
+
+/* Tablet: 3 columns */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .branding-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(1rem, 4vw, 2rem);
+        row-gap: 2.25rem;
+    }
+
+    .branding-card-media {
+        border-radius: 14px;
+        padding: clamp(0.6rem, 1.5vw, 1.25rem);
+    }
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 640px) {
+    .branding-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(0.625rem, 5vw, 1.5rem);
+        row-gap: 1.5rem;
+    }
+
+    .branding-card-media {
+        border-radius: 12px;
+        padding: clamp(0.45rem, 2vw, 0.65rem);
+    }
+
+    .branding-card-body {
+        margin-top: 0.6rem;
+        gap: 0.2rem;
+    }
+
+    .branding-card-title {
+        font-size: clamp(0.88rem, 3.2vw, 0.98rem);
+        line-height: 1.22;
+    }
+
+    .branding-card-industry {
+        font-size: clamp(0.78rem, 2.8vw, 0.85rem);
+        line-height: 1.3;
+    }
+
+    .branding-view-details-link,
+    .branding-view-details-btn {
+        font-size: clamp(0.72rem, 2.6vw, 0.8rem);
+        margin-top: 0.15rem;
+    }
+}
+
+/* Extra small mobile (<= 360px) */
+@media (max-width: 360px) {
+    .branding-grid {
+        gap: 0.5rem;
+        row-gap: 1.25rem;
+    }
+
+    .branding-card-media {
+        border-radius: 10px;
+        padding: 0.4rem;
+    }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .branding-card-media,
+    .branding-card-img,
+    .branding-view-details-link,
+    .branding-view-details-btn,
+    .branding-view-details-arrow {
+        transition: none !important;
+        transform: none !important;
+    }
+}

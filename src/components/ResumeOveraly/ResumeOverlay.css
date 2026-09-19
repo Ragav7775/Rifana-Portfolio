@@ -1,0 +1,257 @@
+/* ==========================================================================
+   ResumeOverlay.css
+   Self-contained, non-invasive styling for the Resume Download Overlay.
+   All rules are strictly namespaced under .resume-overlay-*.
+   Zero global element styles, zero layout disruption.
+   ========================================================================== */
+
+.resume-overlay-root {
+  position: fixed;
+  z-index: 95;
+  box-sizing: border-box;
+  pointer-events: none;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.resume-overlay-root *,
+.resume-overlay-root *::before,
+.resume-overlay-root *::after {
+  box-sizing: border-box;
+}
+
+/* ── Cylinder / Capsule Container (Foreground layer) ─────────────────────── */
+.resume-overlay-cylinder-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  pointer-events: auto;
+  overflow: hidden;
+  box-shadow: 0 8px 24px -4px rgba(7, 85, 61, 0.22),
+    0 2px 8px -2px rgba(212, 175, 55, 0.28),
+    0 0 0 1px rgba(212, 175, 55, 0.35);
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 246, 211, 0.94));
+  transform-origin: bottom left;
+  z-index: 10;
+}
+
+/* ── Integrated UI Button ────────────────────────────────────────────────── */
+.resume-overlay-btn {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 9999px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.65) !important;
+  background: transparent !important;
+  color: var(--color-primary, #07553D) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: border-color 0.25s ease, background-color 0.25s ease !important;
+  overflow: hidden !important;
+}
+
+.resume-overlay-btn:hover {
+  border-color: rgba(212, 175, 55, 1) !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+.resume-overlay-btn:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.85);
+  outline-offset: 2px;
+}
+
+/* ── Button Icon Capsule ─────────────────────────────────────────────────── */
+.resume-overlay-icon-capsule {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(7, 85, 61, 0.12), rgba(212, 175, 55, 0.15));
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: var(--color-primary, #07553D);
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.resume-overlay-btn:hover .resume-overlay-icon-capsule {
+  transform: scale(1.04);
+  background: linear-gradient(135deg, rgba(7, 85, 61, 0.18), rgba(212, 175, 55, 0.22));
+}
+
+.resume-overlay-icon-svg {
+  display: block;
+}
+
+/* ── Button Label ────────────────────────────────────────────────────────── */
+.resume-overlay-label-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* padding-left: 0.65rem; */
+  /* padding-right: 0.85rem; */
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+
+.resume-overlay-label-text {
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--color-primary, #07553D);
+  text-transform: uppercase;
+}
+
+.resume-overlay-label-subtext {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #c59b27;
+  letter-spacing: 0.02em;
+}
+
+.resume-overlay-arrow-icon {
+  width: 13px;
+  height: 13px;
+  color: var(--color-primary, #07553D);
+  opacity: 0.8;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.resume-overlay-btn:hover .resume-overlay-arrow-icon {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+/* ── Emergence Stage (Anchored behind cylinder with bottom clipping only) ─ */
+.resume-overlay-emergence-stage {
+  position: absolute;
+  bottom: 0;
+  overflow: visible;
+  clip-path: inset(-1000px -1000px 0px -1000px);
+  -webkit-clip-path: inset(-1000px -1000px 0px -1000px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ── Person Actor Container ──────────────────────────────────────────────── */
+.resume-overlay-person-actor {
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  filter: drop-shadow(0 14px 30px rgba(7, 85, 61, 0.32));
+  pointer-events: none;
+  transform-origin: bottom center;
+  overflow: visible;
+}
+
+/* ── Image Container (Holds image, indicator, and invisible mask) ─────────── */
+.resume-overlay-image-container {
+  position: relative;
+  pointer-events: none;
+  user-select: none;
+  overflow: visible;
+  background: transparent;
+}
+
+.resume-overlay-img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: bottom left;
+  display: block;
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* ── Completely Invisible Polygon Mask Hotspot ───────────────────────────── */
+/* The mask is 100% invisible: no border, no fill, no outline, no stroke.    */
+/* Only hit-testing is active within the custom-defined polygon points.      */
+.resume-overlay-invisible-hotspot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 200;
+  opacity: 0;
+}
+
+.resume-overlay-invisible-hotspot:focus-visible {
+  outline: none !important;
+}
+
+/* ── Animated Indicator Above Rifana Image (Mirrors AboutSection) ────────── */
+.resume-overlay-indicator-wrapper {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.resume-overlay-indicator-content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.resume-overlay-indicator-text {
+  font-family: var(--font-nautigal), 'The Nautigal', cursive;
+  font-size: clamp(1.5rem, 2vw, 40px);
+  font-weight: 700;
+  font-style: normal;
+  color: #07553D;
+  line-height: 1;
+  text-transform: capitalize;
+  white-space: nowrap;
+  transform: rotate(-3deg);
+  margin-bottom: -4px;
+}
+
+.resume-overlay-indicator-arrow {
+  width: clamp(48px, 4.2vw, 65px);
+  height: auto;
+  position: relative;
+  transform: rotate(-10deg);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Reduced Motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+  .resume-overlay-btn,
+  .resume-overlay-icon-capsule,
+  .resume-overlay-indicator-wrapper,
+  .resume-overlay-indicator-arrow,
+  .resume-overlay-arrow-icon {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,648 @@
+/* ============================================================
+   ContactSection.css — Production Contact Section Styling
+   ============================================================ */
+
+.contact-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg, #fff6d3);
+  padding: clamp(3.5rem, 6vw, 6.5rem) clamp(1.25rem, 5vw, 4.5rem) clamp(4.5rem, 7vw, 7.5rem);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ── Inner Constraint ─────────────────────────────────────── */
+.contact-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* ── Common Section Header: CONTACT + Get In [Rifana] Touch... ── */
+.contact-section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  position: relative;
+  z-index: 10;
+}
+
+.contact-section-title-main {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(2.6rem, 6vw, 4.375rem);
+  font-weight: 700;
+  color: #000000;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 0.25rem 0;
+}
+
+.contact-section-title-sub-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  position: absolute;
+  left: clamp(2rem, 13vw, 10rem);
+  /* top: 50%; */
+  /* bottom: 0.35rem; */
+}
+
+.contact-section-title-script {
+  font-family: var(--font-tempting), 'The Nautigal', cursive;
+  font-size: clamp(3rem, 3.5vw, 6.25rem);
+  font-weight: 400;
+  color: var(--color-primary, #07553D);
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.contact-section-header-character {
+  position: relative;
+  height: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.contact-header-char-img {
+  width: auto !important;
+  height: clamp(110px, 10vw, 120px) !important;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
+
+/* ── Container (Bigger Globe Left ~58% / Form Right ~42%) ──── */
+.contact-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+  gap: clamp(1.5rem, 7vw, 6.5rem);
+  align-items: stretch;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   RIGHT COLUMN: CONTACT CARD & DRAG-ANIMATED-SVG
+   (Exact structure as in ProjectSection)
+   ============================================================ */
+.contact-card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Main Dashed Selection Container */
+.contact-dashed-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-drag-svg {
+  position: relative;
+  width: 100% !important;
+  display: block;
+}
+
+/* Encapsulated Card Frame aligned with the SVG selection rectangle */
+.contact-card-frame {
+  box-sizing: border-box;
+  padding: clamp(1rem, 1vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Main Form Card */
+.contact-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 253, 245, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px -15px rgba(7, 85, 61, 0.16),
+    0 0 0 1px rgba(255, 246, 211, 0.6) inset,
+    0 4px 18px rgba(212, 175, 55, 0.12);
+  padding: clamp(1.2rem, 2vw, 1.5rem);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0;
+}
+
+/* ── Card Header Styling (Simple, Clean Typography) ──────── */
+.contact-card-header {
+  padding: 0 0 0.85rem 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+  /* margin-bottom: 0.85rem; */
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-card-title {
+  font-family: var(--font-tempting), "Unna", serif !important;
+  font-size: clamp(1.5rem, 2vw, 1.8rem) !important;
+  font-weight: 700 !important;
+  color: var(--color-primary, #07553D) !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.01em;
+  margin: 0 !important;
+}
+
+.contact-card-description {
+  font-family: var(--font-inter), sans-serif !important;
+  font-size: 0.85rem !important;
+  color: var(--color-black-70, rgba(0, 0, 0, 0.7)) !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+}
+
+/* ── Card Content & Form ──────────────────────────────────── */
+.contact-content {
+  padding: 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contact-label {
+  font-family: var(--font-unna), "Unna", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary-dark, #0a4f3a);
+  letter-spacing: 0.01em;
+}
+
+.contact-required {
+  color: #dc2626;
+  margin-left: 0.15rem;
+}
+
+/* Form Inputs */
+.contact-input,
+.contact-textarea {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(212, 175, 55, 0.38) !important;
+  border-radius: 10px !important;
+  padding: 0.65rem 0.85rem !important;
+  font-family: var(--font-inter), sans-serif !important;
+  font-size: 0.9rem !important;
+  color: var(--color-black, #111111) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  color: rgba(0, 0, 0, 0.45) !important;
+  font-family: var(--font-unna), "Unna", serif;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.contact-input:focus-visible,
+.contact-textarea:focus-visible {
+  border-color: var(--color-primary, #07553D) !important;
+  box-shadow: 0 0 0 3px rgba(7, 85, 61, 0.18) !important;
+  outline: none !important;
+}
+
+.contact-textarea {
+  height: 105px !important;
+  min-height: 105px !important;
+  max-height: 105px !important;
+  resize: none !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Slim elegant custom scrollbar for textarea when scrolling */
+.contact-textarea::-webkit-scrollbar {
+  width: 5px;
+}
+
+.contact-textarea::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+}
+
+.contact-textarea::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.5);
+  border-radius: 4px;
+}
+
+.contact-textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary, #07553D);
+}
+
+/* Error States */
+.contact-input-error {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15) !important;
+}
+
+.contact-error {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: #b91c1c;
+  margin: 0.15rem 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Submit Button */
+.contact-actions {
+  margin-top: 0.25rem;
+}
+
+.contact-submit-btn {
+  width: 100%;
+  height: 44px !important;
+  background-color: var(--color-primary, #07553D) !important;
+  color: #ffffff !important;
+  border-radius: 11px !important;
+  font-family: var(--font-inter), sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 8px 20px -4px rgba(7, 85, 61, 0.35);
+}
+
+.contact-submit-btn:hover:not(:disabled) {
+  background-color: #0a4f3a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -4px rgba(7, 85, 61, 0.42);
+}
+
+.contact-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.contact-btn-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.contact-spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: contact-spin 0.75s linear infinite;
+}
+
+@keyframes contact-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Card Footer & Social Links ───────────────────────────── */
+.contact-footer {
+  padding: 0;
+  /* margin-top: 1.25rem; */
+  padding-top: 1rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.22);
+  display: flex;
+  justify-content: center;
+}
+
+.contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 246, 211, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--color-primary, #07553D);
+  text-decoration: none;
+  font-family: var(--font-unna), "Unna", serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.contact-social-link:hover {
+  background: rgba(7, 85, 61, 0.12);
+  border-color: var(--color-primary, #07553D);
+  color: var(--color-primary, #07553D);
+  transform: translateY(-1.5px);
+}
+
+.contact-social-link:focus-visible {
+  outline: 2px solid var(--color-primary, #07553D);
+  outline-offset: 2px;
+}
+
+.contact-social-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   LEFT COLUMN: 3D GLOBE CONTAINER (EXPANDED / PROMINENT)
+   ============================================================ */
+.contact-globe-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 590px;
+  min-height: 590px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.contact-globe-inner {
+  position: relative;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 28px;
+  overflow: visible;
+}
+
+/* Atmosphere completely removed - clean globe presentation */
+
+.contact-globe-canvas {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.contact-globe-canvas canvas {
+  margin: auto !important;
+  display: block !important;
+  pointer-events: auto !important;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* Tablet (1023px and below) */
+@media (max-width: 1023px) {
+  .contact-container {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 600px;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .contact-section-header {
+    margin-bottom: 6rem;
+  }
+
+  .contact-container> :nth-child(1) {
+    order: 2;
+    left: 0%;
+  }
+
+  .contact-container> :nth-child(2) {
+    order: 1;
+  }
+
+  .contact-card-wrapper {
+    order: 2;
+    height: auto;
+  }
+
+  .contact-dashed-container {
+    height: auto;
+  }
+
+  .contact-card {
+    height: 100%;
+  }
+
+  .contact-globe-wrapper {
+    width: 100%;
+    max-width: min(100%, 540px);
+    height: clamp(340px, 48vw, 440px);
+    min-height: unset;
+    order: 1;
+    overflow: visible;
+    margin: 0 auto;
+  }
+
+  .contact-globe-inner {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: visible;
+  }
+}
+
+/* Mobile (767px and below) */
+@media (max-width: 767px) {
+  .contact-section {
+    padding: 3rem 0.25rem 4rem;
+  }
+
+  .contact-section-header {
+    margin-bottom: 10rem;
+  }
+
+  .contact-section-title-sub-wrap {
+    position: absolute;
+    top: -20%;
+    left: 5%;
+    margin-top: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-section-title-script-touch {
+    position: relative;
+    left: 45%;
+  }
+
+  /* .contact-header-char-img {
+    height: 120px !important;
+  } */
+
+  .contact-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .contact-globe-wrapper {
+    width: 100%;
+    max-width: min(100%, 360px);
+    height: clamp(270px, 72vw, 340px);
+    min-height: unset;
+    overflow: visible;
+    margin: 0 auto;
+  }
+
+  .contact-globe-inner {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: visible;
+  }
+
+  .contact-card-wrapper {
+    height: auto;
+  }
+
+  .contact-dashed-container {
+    height: auto;
+    padding: 0;
+  }
+
+  .contact-card {
+    height: 100%;
+    padding: 1.15rem 0.95rem;
+    border-radius: 16px;
+  }
+
+  .contact-container> :nth-child(1) {
+    order: 2;
+    left: -6%;
+  }
+
+  .contact-container> :nth-child(2) {
+    order: 1;
+  }
+
+  .contact-socials {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .contact-social-link {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact-social-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .contact-social-text {
+    display: none !important;
+  }
+}
+
+/* Landscape orientation support for tablet and mobile */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .contact-globe-wrapper {
+    height: clamp(240px, 60vh, 320px);
+    max-width: min(100%, 420px);
+    min-height: unset;
+    overflow: visible;
+    margin: 0 auto;
+  }
+
+  .contact-globe-inner {
+    height: 100%;
+    top: 0;
+    overflow: visible;
+  }
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+
+  .contact-globe-wrapper,
+  .contact-svg-overlay,
+  .contact-submit-btn,
+  .contact-social-link,
+  .contact-dialog-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .contact-svg-overlay {
+    opacity: 0.15;
+  }
+
+  .contact-spinner {
+    animation: none;
+  }
+}

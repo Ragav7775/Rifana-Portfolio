@@ -1,0 +1,223 @@
+/* ============================================================
+   HeroSection.css
+   Consolidated HeroSection with DragAnimatedSVG & Differentiated Text Reveals
+   ============================================================ */
+
+/* ── Outer Section & Frame (Migrated from page/globals) ──── */
+.hero-section {
+    position: relative;
+    width: 100%;
+    margin-top: clamp(30px, 12vw, 10px);
+    padding: 0 clamp(16px, 5vw, 80px) 0;
+    box-sizing: border-box;
+    background: var(--color-bg, #fff6d3);
+    overflow: hidden;
+}
+
+.hero-video-frame {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ── DragAnimatedSVG Centered Wrapper & Frame ────────────── */
+.hero-drag-svg-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.hero-drag-svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: visible;
+}
+
+.hero-video-frame-inner {
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.hero-video {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ── Text Animation Overlays (Top-Right & Bottom-Left) ───── */
+.hero-text-overlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    user-select: none;
+    z-index: 10;
+    background: transparent;
+    overflow: visible;
+}
+
+.hero-text-top-right {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.hero-text-bottom-left {
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* ── Dedicated Line 1 & Line 2 Layout Wrappers ───────────── */
+.hero-text-line {
+    display: block;
+    position: relative;
+    line-height: 1.05;
+    background: var(--color-bg);
+    overflow: visible;
+    border-radius: 20px;
+}
+
+/* ── Line 1 Typography: Inter Sans in Pure Black (#000000) ─ */
+.hero-text-line1 {
+    font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(2.25rem, 3.8vw, 3.75rem);
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    text-transform: none;
+}
+
+/* ── Line 2 Typography: Tempting Script in Primary (#07553D) */
+.hero-text-line2 {
+    font-family: var(--font-tempting), "Tempting", "The Nautigal", cursive;
+    font-size: clamp(2.5rem, 2vw, 4.25rem);
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    line-height: 1.65;
+    text-transform: none;
+    position: relative;
+    left: 20%;
+}
+
+/* Responsive typography: Tablet */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .hero-video {
+        aspect-ratio: 16 / 9;
+    }
+
+    .hero-video-frame {
+        aspect-ratio: 16 / 9;
+    }
+
+    .hero-video-frame-inner {
+        aspect-ratio: 16 / 9;
+    }
+
+    .hero-section {
+        margin-top: 0;
+    }
+
+    .hero-text-line1 {
+        font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+        line-height: 1.05;
+    }
+
+    .hero-text-line2 {
+        font-size: clamp(1rem, 3vw, 2.85rem);
+        line-height: 1.65;
+    }
+}
+
+/* Responsive typography: Mobile */
+@media (max-width: 767px) {
+    .hero-video {
+        aspect-ratio: 9 / 16;
+    }
+
+    .hero-video-frame {
+        aspect-ratio: 9 / 16;
+        width: 100%;
+    }
+
+    .hero-video-frame-inner {
+        aspect-ratio: 9 / 16;
+    }
+
+    .hero-section {
+        margin-top: 0;
+        margin-bottom: 60px;
+        padding: 10px 20px;
+    }
+
+    .hero-text-line1 {
+        font-size: clamp(1.45rem, 5.2vw, 1.85rem);
+        line-height: 1.1;
+    }
+
+    .hero-text-line2 {
+        font-size: clamp(1.25rem, 3vw, 2.1rem);
+        line-height: 1.65;
+    }
+}
+
+/* ── DiaTextReveal Animated Elements ─────────────────────── */
+/* Padding envelope ensures script ascenders/descenders are fully covered by background-clip: text */
+.hero-dia-reveal {
+    display: inline-block;
+    padding: 0.18em 0.25em;
+    margin: -0.18em -0.25em;
+    line-height: inherit;
+    text-shadow: none !important;
+    overflow: visible;
+}
+
+.hero-dia-line1 {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-shadow: none !important;
+}
+
+.hero-dia-line2 {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-shadow: none !important;
+}
+
+/* ── Reduced Motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        animation: none !important;
+        transition: none !important;
+    }
+}

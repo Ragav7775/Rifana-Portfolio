@@ -1,0 +1,533 @@
+/* ============================================================
+   ProjectSection.css
+   High-Fidelity Projects 3x2 Editorial Grid Styles
+   ============================================================ */
+
+.projects-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-bg, #fff6d3);
+    padding: clamp(3.5rem, 6vw, 6.5rem) clamp(1.25rem, 6vw, 4.5rem) clamp(4.5rem, 7vw, 8rem);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.projects-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* ── Header Composition: PROJECTS + Things That [Rifana] 've Made... ── */
+.projects-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: clamp(2.5rem, 8.5vw, 5rem);
+    position: relative;
+    z-index: 10;
+}
+
+.projects-title-main {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: clamp(2.6rem, 6vw, 4.375rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin: 0 0 0.25rem 0;
+}
+
+.projects-title-sub-wrap {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    position: absolute;
+    /* top: 0; */
+    left: clamp(1rem, 12vw, 8.5rem);
+}
+
+.projects-title-script {
+    font-family: var(--font-tempting), 'The Nautigal', cursive;
+    font-size: clamp(3rem, 3.5vw, 6.5rem);
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 1;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.projects-header-character {
+    position: relative;
+    height: auto;
+    /* margin: 0 0.15rem; */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.projects-header-char-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
+
+/* ── Main Dashed Container with DragAnimatedSVG ───────────── */
+.projects-dashed-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.projects-drag-svg {
+    position: relative;
+    width: 100% !important;
+    display: block;
+}
+
+/* Encapsulated Grid Frame aligned with the SVG selection rectangle */
+.projects-grid-frame {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(0.75rem, 1.8vw, 1.75rem);
+    z-index: 2;
+}
+
+/* ── 3-Column x 2-Row Clickable Categories Grid (Desktop) ─── */
+.projects-categories-grid {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr auto 1fr;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+/* Individual Category Card */
+.project-cat-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding: clamp(1.25rem, 2.2vw, 2rem) clamp(1.1rem, 1vw, 2.5rem);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.project-cat-card:hover,
+.project-cat-card:focus-visible {
+    transform: translateY(-3px);
+}
+
+/* Desktop Vertical Separators between Columns 1-2 and 2-3 */
+@media (min-width: 1024px) {
+
+    .project-cat-card.cell-idx-0,
+    .project-cat-card.cell-idx-3,
+    .project-cat-card.cell-idx-1,
+    .project-cat-card.cell-idx-4 {
+        border-right: 1px solid rgba(212, 175, 55, 0.45);
+    }
+}
+
+.project-cat-top-bottom-row {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Top Row inside each Category Cell (Leaf + Number + Icon) ── */
+.project-cat-top-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Delicate Botanical Leaf Line Art */
+.project-cat-leaf-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.project-cat-leaf-frame {
+    position: relative;
+    width: clamp(45px, 5vw, 75px);
+    flex: 0 0 auto;
+    pointer-events: none;
+}
+
+.project-cat-leaf-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    opacity: 0.85;
+    filter: drop-shadow(0 2px 6px rgba(152, 116, 0, 0.12));
+}
+
+/* Large Gold Serif Number */
+.project-cat-number {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(3.25rem, 4.8vw, 4.75rem);
+    font-weight: 700;
+    color: var(--color-gold-dark, #987400);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.project-cat-card:hover .project-cat-number {
+    color: var(--color-primary, #07553D);
+}
+
+/* Floating Category Illustration (Grayscale 100% default -> Color on hover) */
+.project-cat-icon-frame {
+    position: absolute;
+    top: 12%;
+    right: 15%;
+    width: clamp(75px, 10.5vw, 100px);
+    height: auto;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-cat-card:hover .project-cat-icon-frame {
+    transform: scale(1.08) rotate(3deg);
+}
+
+.project-cat-icon-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    filter: grayscale(100%) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+    opacity: 0.85;
+    transition: filter 300ms ease, opacity 300ms ease;
+}
+
+.project-cat-card:hover .project-cat-icon-img {
+    filter: grayscale(0%) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+    opacity: 1;
+}
+
+/* ── Bottom Row inside each Category Cell (Title + Script + Arrow) ── */
+.project-cat-bottom-row {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Category Main Title */
+.project-cat-title {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.85rem, 2.6vw, 2.65rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* Script Subtitle + Forward Arrow Container */
+.project-cat-script-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    align-self: flex-end;
+    margin-top: 0.25rem;
+    position: absolute;
+    top: 72%;
+    right: 15%;
+}
+
+.project-cat-script {
+    font-family: var(--font-tempting), 'The Nautigal', cursive;
+    font-size: clamp(1rem, 2vw, 2.5rem);
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 1;
+    white-space: nowrap;
+    transition: transform 0.3s ease;
+}
+
+.project-cat-card:hover .project-cat-script {
+    transform: rotate(-1deg) scale(1.04);
+}
+
+/* Forward Arrow */
+.project-cat-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold-dark, #987400);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 0.2rem;
+}
+
+.project-cat-arrow-svg {
+    width: clamp(18px, 1.8vw, 22px);
+    height: auto;
+    display: block;
+}
+
+.project-cat-card:hover .project-cat-arrow {
+    color: var(--color-primary, #07553D);
+    transform: translateX(4px);
+}
+
+/* ── Horizontal Golden Divider with Dots (Desktop) ────────── */
+.project-grid-row-divider {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: clamp(0.5rem, 1vw, 1rem) 0;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+}
+
+.divider-col-segment {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.45);
+}
+
+.divider-dot-img {
+    height: auto;
+    display: block;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+.divider-intersection-dot {
+    margin: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================================
+   GRID DIVIDER VISIBILITY
+   ============================================================ */
+
+/* Hidden by default */
+.project-grid-divider-desktop,
+.project-grid-divider-tablet {
+    display: none;
+}
+
+.project-grid-divider-desktop {
+    display: flex;
+}
+
+.project-grid-divider-tablet {
+    display: none;
+}
+
+
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+/* Tablet (768px - 1023px): 2 Columns x 3 Rows */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .projects-grid-frame {
+        padding: clamp(0.5rem, 2.5vw, 1.25rem);
+    }
+
+    .projects-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr auto 1fr auto 1fr;
+        gap: 0;
+    }
+
+    .projects-title-sub-wrap {
+        left: 5%;
+        top: -45%;
+    }
+
+    .project-cat-icon-frame {
+        right: 20%;
+    }
+
+    .project-cat-script-wrap {
+        top: 80%;
+        right: 25%;
+    }
+
+    .project-grid-divider-desktop {
+        display: none !important;
+    }
+
+    .project-grid-divider-tablet {
+        display: flex !important;
+    }
+
+    .project-cat-card.cell-idx-0,
+    .project-cat-card.cell-idx-2,
+    .project-cat-card.cell-idx-4 {
+        border-right: 1px solid rgba(212, 175, 55, 0.45);
+    }
+
+    .project-cat-card.cell-idx-1,
+    .project-cat-card.cell-idx-3,
+    .project-cat-card.cell-idx-5 {
+        border-right: none;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+}
+
+/* Mobile (< 768px): 1 Column x 6 Rows */
+@media (max-width: 767px) {
+    .projects-section {
+        padding: 2.5rem 1rem 3.5rem;
+    }
+
+    .projects-title-sub-wrap {
+        left: 3%;
+        top: 20%;
+    }
+
+    .projects-title-script {
+        font-size: clamp(1.5rem, 2.5vw, 6.5rem);
+    }
+
+    .projects-header-char-img {
+        width: 35px;
+    }
+
+    .projects-dashed-container {
+        padding: 0;
+    }
+
+    .projects-grid-frame {
+        padding: 0.75rem 0.75rem;
+    }
+
+    .projects-categories-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 0;
+        justify-content: center;
+    }
+
+    .project-grid-row-divider {
+        display: none !important;
+    }
+
+    .project-grid-divider-desktop,
+    .project-grid-divider-tablet {
+        display: none !important;
+    }
+
+    /* If the divider is being created with card pseudo-elements */
+    .project-cat-card::before,
+    .project-cat-card::after {
+        display: none !important;
+    }
+
+    .projects-svg-overlay {
+        left: -6%;
+    }
+
+    .project-cat-icon-frame {
+        right: 25%;
+    }
+
+    .project-cat-script-wrap {
+        top: 80%;
+        right: 35%;
+    }
+
+    .project-cat-card {
+        padding: clamp(0.75rem, 2vw, 1.25rem) clamp(0.5rem, 2vw, 1rem);
+        border-right: none !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: clamp(8px, 2.5vw, 16px);
+        overflow: visible;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .project-cat-leaf-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: clamp(34px, 9vw, 48px);
+    }
+
+    .project-cat-leaf-frame {
+        width: 100%;
+        max-width: 48px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .project-cat-leaf-img {
+        width: 100%;
+        height: auto;
+        max-height: 75px;
+        object-fit: contain;
+    }
+
+    .project-cat-top-bottom-row {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-cat-card.cell-idx-5 {
+        border-bottom: none;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .project-cat-title {
+        white-space: normal;
+    }
+}

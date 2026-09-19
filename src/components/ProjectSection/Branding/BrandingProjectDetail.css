@@ -1,0 +1,518 @@
+/* ============================================================
+   BrandingProjectDetail.css
+   Detailed Case-Study Presentation Styles for Branding Projects
+   ============================================================ */
+
+.branding-detail-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg, #fff6d3);
+    padding: clamp(2rem, 4vw, 4.5rem) clamp(1rem, 3.5vw, 3.5rem);
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.branding-detail-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    padding: 0 clamp(1.5rem, 4vw, 5rem);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ── Top Navigation & Back Link ───────────────────────────── */
+.branding-detail-back-nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 0.5rem;
+}
+
+.branding-detail-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1rem, 1.3vw, 1.25rem);
+    font-weight: 700;
+    color: var(--color-primary, #07553D);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.branding-back-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.branding-detail-back-link:hover {
+    color: var(--color-primary-dark, #0a4f3a);
+    transform: translateX(-4px);
+}
+
+/* ── Common Section Structure ─────────────────────────────── */
+.branding-detail-section {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   SECTION 1: HERO (BRAND INFO + BRAND BOARD)
+   ============================================================ */
+.branding-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Left Column: Typography & Content */
+.branding-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.branding-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.branding-main-heading {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.branding-heading-label {
+    font-weight: 700;
+    color: #111111;
+}
+
+.branding-heading-name {
+    font-weight: 700;
+    color: #111111;
+}
+
+.branding-industry-block {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.branding-industry-meta-label {
+    color: #111111;
+}
+
+.branding-industry-meta-value {
+    color: var(--color-gold-dark, #987400);
+}
+
+.branding-industry-meta-line2 {
+    display: block;
+    color: var(--color-gold-dark, #987400);
+}
+
+/* Narrative Story Paragraph */
+.branding-description-block {
+    margin-top: 0.25rem;
+}
+
+.branding-description-text {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1rem, 1.25vw, 1.2rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* Key Features Block */
+.branding-features-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.75rem;
+}
+
+.branding-features-heading {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+    font-weight: 700;
+    color: #111111;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.branding-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.branding-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+    color: #262626;
+    line-height: 1.45;
+}
+
+.branding-feature-bullet {
+    color: var(--color-gold-dark, #987400);
+    font-size: 1.1rem;
+    line-height: 1.3;
+    flex-shrink: 0;
+}
+
+.branding-feature-text {
+    flex: 1;
+}
+
+/* Right Column: Brand Board Frame */
+.branding-board-column {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.branding-board-card {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    border: 1.5px solid #222222;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.branding-board-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* ============================================================
+   SECTION 2: BRANDING SHOWCASE GALLERY (FLEX & WRAP)
+   ============================================================ */
+.branding-gallery-section {
+    width: 100%;
+}
+
+.branding-gallery-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.branding-gallery-card {
+    position: relative;
+    flex: 1 1 calc(50% - clamp(1.25rem, 2.5vw, 2.5rem) / 2);
+    min-width: min(100%, 460px);
+    background: #ffffff;
+    border: 1.5px solid #2b2b2b;
+    border-radius: 14px;
+    padding: clamp(1rem, 2vw, 1.75rem);
+    box-sizing: border-box;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.branding-gallery-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.branding-gallery-card--featured {
+    border-width: 3px;
+}
+
+.branding-gallery-img-wrap {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.branding-gallery-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* ============================================================
+   SECTION 2: WORDMARK / LOGO DIAGRAM BREAKDOWN (LEGACY/FALLBACK)
+   ============================================================ */
+.branding-diagram-section {
+    width: 100%;
+}
+
+.branding-diagram-card {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    border: 4px solid #0071BD;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.branding-diagram-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* ============================================================
+   SECTION 3: FULL BRANDING PRESENTATION CARD
+   ============================================================ */
+.branding-full-section {
+    width: 100%;
+}
+
+.branding-full-card {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    border: 1.5px solid #2b2b2b;
+    border-radius: 14px;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    box-sizing: border-box;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.branding-full-header {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 0.75rem;
+}
+
+.branding-full-title {
+    font-family: var(--font-inter), sans-serif;
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    font-weight: 800;
+    color: #111111;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.branding-full-content {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.branding-full-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* ============================================================
+   BOTTOM NAVIGATION / PREV & NEXT PROJECTS
+   ============================================================ */
+.branding-detail-footer-nav {
+    width: 100%;
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+    border-top: 1px solid rgba(212, 175, 55, 0.4);
+    /* margin-top: 1rem; */
+}
+
+.branding-nav-links-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.branding-nav-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    transition: all 0.25s ease;
+    width: fit-content;
+    align-items: center;
+    /* max-width: 320px; */
+}
+
+.branding-nav-btn:hover {
+    background: #ffffff;
+    border-color: var(--color-primary, #07553D);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(7, 85, 61, 0.1);
+}
+
+.branding-nav-sub {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary, #07553D);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.branding-nav-title {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111111;
+}
+
+.branding-nav-all-btn {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.5rem;
+    border-radius: 9999px;
+    background: var(--color-primary, #07553D);
+    color: #ffffff;
+    font-family: var(--font-inter), sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(7, 85, 61, 0.2);
+}
+
+.branding-nav-all-btn:hover {
+    background: var(--color-primary-dark, #0a4f3a);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(7, 85, 61, 0.3);
+}
+
+.branding-nav-placeholder {
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .branding-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .branding-board-card {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .branding-diagram-card {
+        border-width: 3px;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+    .branding-detail-page {
+        padding: 2rem 1rem 3.5rem;
+    }
+
+    .branding-detail-inner {
+        gap: 1.25rem;
+    }
+
+    .branding-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .branding-main-heading {
+        font-size: 1.25rem;
+    }
+
+    .branding-industry-block {
+        font-size: 1.1rem;
+    }
+
+    .branding-description-text {
+        font-size: 0.98rem;
+    }
+
+    .branding-feature-item {
+        font-size: 0.92rem;
+    }
+
+    .branding-diagram-card {
+        border-width: 2.5px;
+        border-radius: 10px;
+    }
+
+    .branding-full-card {
+        padding: 1rem 0.85rem;
+        border-radius: 10px;
+        gap: 0.85rem;
+    }
+
+    .branding-full-title {
+        font-size: 1.65rem;
+    }
+
+    .branding-nav-links-row {
+        align-items: stretch;
+    }
+
+    .branding-nav-btn {
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .branding-nav-all-btn {
+        width: fit-content;
+    }
+
+    .branding-nav-placeholder {
+        display: none;
+    }
+}

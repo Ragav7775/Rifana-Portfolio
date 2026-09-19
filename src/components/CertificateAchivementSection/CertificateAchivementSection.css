@@ -1,0 +1,551 @@
+/* ============================================================
+   CertificateAchivementSection.css
+   High-Fidelity "Certifications & Achievements" Section Styles
+   ============================================================ */
+
+/* ── CSS Custom Properties for Responsive Card Sizing ──────── */
+:root {
+    /* Collapsed Card Dimensions across Breakpoints */
+    --cert-card-w-desktop: 320px;
+    --cert-card-w-tablet: 300px;
+    --cert-card-w-mobile: 250px;
+
+    /* Card Internal Padding */
+    --cert-card-pad-desktop: 1.25rem;
+    --cert-card-pad-tablet: 1.1rem;
+    --cert-card-pad-mobile: 1rem;
+
+    /* Marquee Spacing & Duration */
+    --cert-marquee-gap-desktop: 2rem;
+    --cert-marquee-gap-tablet: 1.5rem;
+    --cert-marquee-gap-mobile: 1.15rem;
+
+    --cert-marquee-speed-desktop: 55s;
+    --cert-marquee-speed-tablet: 45s;
+    --cert-marquee-speed-mobile: 35s;
+
+    /* Expanded Box Custom Dimensions across Breakpoints */
+    --cert-expanded-w-desktop: 900px;
+    --cert-expanded-h-desktop: 560px;
+    --cert-expanded-w-tablet: 680px;
+    --cert-expanded-h-tablet: 640px;
+    --cert-expanded-w-mobile: calc(100vw - 1.5rem);
+    --cert-expanded-h-mobile: auto;
+}
+
+/* ── Main Section Container ──────────────────────────────── */
+.cert-achievement-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-bg, #fff6d3);
+    /* padding: clamp(3rem, 5vw, 6rem) clamp(1.25rem, 6vw, 4.5rem) clamp(4rem, 7vw, 7.5rem); */
+    padding: clamp(3rem, 5vw, 6rem) 0 clamp(4rem, 7vw, 7.5rem);
+    box-sizing: border-box;
+    overflow: hidden;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+.cert-achievement-section,
+.cert-achievement-section * {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -webkit-user-drag: none;
+}
+
+.cert-achievement-inner {
+    width: 100%;
+    max-width: 1380px;
+    margin: 0 auto;
+    /* padding: 0 clamp(1.25rem, 6vw, 4.5rem); */
+    box-sizing: border-box;
+}
+
+/* ── Section Header ──────────────────────────────────────── */
+.cert-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* margin-bottom: clamp(2rem, 4vw, 3.5rem); */
+    padding: 0 clamp(1.25rem, 6vw, 4.5rem);
+    position: relative;
+    user-select: none;
+}
+
+.cert-title-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.cert-title-script-group {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 10px;
+    width: fit-content;
+    margin-left: 2.5rem;
+    margin-bottom: -0.1rem;
+}
+
+.cert-title-script-line-1,
+.cert-title-script-line-2 {
+    position: relative;
+    font-family: var(--font-tempting), 'The Nautigal', cursive;
+    font-size: clamp(2rem, 3.5vw, 7.2rem);
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 1.85;
+    transform: rotate(-1deg) translateY(-.15em);
+    display: inline-block;
+}
+
+.cert-title-main {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(2.75rem, 6vw, 4.375rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+/* ── Certificate Cards Marquee Area ──────────────────────── */
+.cert-marquee-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0.75rem 0;
+}
+
+.cert-marquee {
+    --gap: var(--cert-marquee-gap-desktop);
+    --duration: var(--cert-marquee-speed-desktop);
+    width: 100%;
+    padding: 1rem 0 1.25rem;
+}
+
+/* 
+ * CRITICAL MARQUEE CONTROL LOGIC (Decoupled & Non-Stick):
+ * When JavaScript state triggers `is-card-expanded` (a certificate card is open),
+ * all marquee track animations are frozen in place instantly via `animation-play-state: paused !important`.
+ * Once closed, `is-card-expanded` is removed and native CSS :hover takes over smoothly.
+ */
+.cert-marquee.is-card-expanded [class*="animate-marquee"],
+.cert-marquee.is-card-expanded .animate-marquee,
+.cert-marquee.is-card-expanded>div,
+.cert-marquee.is-card-expanded * {
+    animation-play-state: paused !important;
+}
+
+/* ── Motion Card Wrapper ─────────────────────────────────── */
+.cert-card-motion-wrap {
+    flex-shrink: 0;
+    display: flex;
+    height: 100%;
+}
+
+/* ── Individual Certificate Card ─────────────────────────── */
+.cert-card {
+    width: var(--cert-card-w-desktop);
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(212, 175, 55, 0.35);
+    border-radius: 20px;
+    padding: var(--cert-card-pad-desktop);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    user-select: none;
+    outline: none;
+}
+
+.cert-card:hover,
+.cert-card:focus-visible {
+    transform: translateY(-10px) scale(1.01);
+    /* box-shadow: 0 20px 40px rgba(7, 85, 61, 0.14); */
+    border-color: var(--color-primary, #07553D);
+}
+
+.cert-card:active {
+    transform: translateY(-3px) scale(0.99);
+}
+
+/* Header: Logo & Verified Badge */
+.cert-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.cert-card-logo-wrap {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    max-width: 130px;
+}
+
+.cert-card-logo {
+    max-height: 32px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* .cert-card-badge {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-gold-dark, #987400);
+    background: rgba(212, 175, 55, 0.12);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+} */
+
+/* Main Content: Certificate Image */
+.cert-card-content {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.cert-card-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f8f8;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.cert-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.35s ease;
+    -webkit-user-drag: none;
+    /* user-drag: none; */
+    pointer-events: none;
+}
+
+.cert-card:hover .cert-card-img {
+    transform: scale(1.03);
+}
+
+/* Footer: Description & Title (Clean 1-line display with line-clamp) */
+.cert-card-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    width: 100%;
+}
+
+.cert-card-footer-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    width: 100%;
+}
+
+.cert-card-title {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.25;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.cert-card-desc-wrap {
+    width: 100%;
+    overflow: hidden;
+}
+
+.cert-card-desc {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: 0.95rem;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.4;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* .cert-card-id {
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--color-gold-dark, #987400);
+    background: rgba(212, 175, 55, 0.12);
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    margin-top: 0.2rem;
+    letter-spacing: 0.02em;
+} */
+
+/* ── "Where I’ve Learned & Earned" Section ────────────────── */
+.cert-earned-section {
+    /* margin-top: clamp(3.5rem, 6vw, 6rem); */
+    position: relative;
+    width: 100%;
+}
+
+.cert-earned-header {
+    text-align: center;
+    /* margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem); */
+    user-select: none;
+}
+
+.cert-earned-heading {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.75rem, 2vw, 2.75rem);
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-primary, #07553D);
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+/* ── Logo Marquee (Left to Right, Transparent Background) ────── */
+.cert-logo-marquee-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem 0;
+    background: transparent !important;
+}
+
+.cert-logo-marquee {
+    --gap: clamp(1.75rem, 3.5vw, 3.25rem);
+    --duration: 35s;
+    width: 100%;
+    padding: 0.5rem 0;
+    background: transparent !important;
+}
+
+/* Seamless logo marquee track & keyframe */
+@keyframes marquee-seamless {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Disable CSS keyframes when draggable is active so JS RAF engine takes full control */
+.cert-logo-marquee.marquee-draggable .marquee-seamless-track,
+.cert-marquee.marquee-draggable .marquee-seamless-track,
+.marquee-draggable .marquee-seamless-track,
+.marquee-draggable-track {
+    animation: none !important;
+}
+
+.marquee-draggable {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+}
+
+.marquee-draggable.is-dragging {
+    cursor: grabbing !important;
+}
+
+.cert-logo-marquee .marquee-seamless-track {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    will-change: transform;
+    animation: marquee-seamless var(--duration, 35s) linear infinite;
+}
+
+.cert-logo-marquee[data-reverse="true"] .marquee-seamless-track,
+.cert-logo-marquee .marquee-seamless-track[data-reverse="true"] {
+    animation-direction: reverse;
+}
+
+.cert-logo-marquee:hover .marquee-seamless-track {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cert-logo-marquee .marquee-seamless-track {
+        animation-play-state: paused !important;
+    }
+}
+
+/* Requirement: All backgrounds removed from marquee container and logo items */
+.cert-logo-item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 0.5rem clamp(0.75rem, 1.5vw, 1.5rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    opacity: 0.85;
+}
+
+.cert-logo-item:hover {
+    transform: translateY(-3px) scale(1.08);
+    opacity: 1;
+    background: transparent !important;
+}
+
+.cert-logo-img {
+    max-height: clamp(34px, 3.8vw, 46px);
+    max-width: clamp(85px, 9.5vw, 125px);
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+    transition: filter 0.25s ease;
+    -webkit-user-drag: none;
+    /* user-drag: none; */
+    pointer-events: none;
+}
+
+/* ── Extra Content in Expandable Modal ────────────────────── */
+.cert-expanded-extra-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.cert-expanded-verification-note {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #666;
+    font-style: italic;
+    margin: 0;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS (Desktop, Tablet, Mobile)
+   ============================================================ */
+
+/* Desktop (≥1024px) */
+@media (min-width: 1024px) {
+    .cert-card {
+        width: var(--cert-card-w-desktop);
+        padding: var(--cert-card-pad-desktop);
+    }
+
+    .cert-marquee {
+        --gap: var(--cert-marquee-gap-desktop);
+        --duration: var(--cert-marquee-speed-desktop);
+    }
+}
+
+/* Tablet (768px – 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .cert-card {
+        width: var(--cert-card-w-tablet);
+        padding: var(--cert-card-pad-tablet);
+        border-radius: 18px;
+    }
+
+    .cert-marquee {
+        --gap: var(--cert-marquee-gap-tablet);
+        --duration: var(--cert-marquee-speed-tablet);
+    }
+
+    .cert-logo-marquee {
+        --duration: 30s;
+    }
+}
+
+/* Mobile (<768px) */
+@media (max-width: 767px) {
+    .cert-achievement-section {
+        padding: 2.5rem 0 4rem;
+    }
+
+    .cert-achievement-inner {
+        padding: 0 1rem;
+    }
+
+    .cert-card {
+        width: var(--cert-card-w-mobile);
+        padding: var(--cert-card-pad-mobile);
+        border-radius: 16px;
+        gap: 0.65rem;
+    }
+
+    .cert-card-title {
+        font-size: 1.05rem;
+    }
+
+    .cert-card-desc {
+        font-size: 0.875rem;
+    }
+
+    .cert-marquee {
+        --gap: var(--cert-marquee-gap-mobile);
+        --duration: var(--cert-marquee-speed-mobile);
+    }
+
+    .cert-logo-marquee {
+        --duration: 25s;
+    }
+
+    .cert-logo-item {
+        padding: 0.4rem 0.75rem;
+    }
+
+    .cert-section-header {
+        padding: 0 0;
+    }
+
+    .cert-title-main {
+        font-size: clamp(2.5rem, 6vw, 4.375rem);
+    }
+
+    .cert-title-script-group {
+        flex-direction: column;
+        margin-bottom: 0;
+        gap: 0;
+    }
+
+
+    .cert-title-script-line-2 {
+        margin-top: -1rem;
+        left: 25%;
+    }
+}

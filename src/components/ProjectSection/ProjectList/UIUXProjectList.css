@@ -1,0 +1,342 @@
+/* ============================================================
+   UIUXProjectList.css
+   Pure Project Cards Listing Styles with 3D-Card Tilt & Sections
+   ============================================================ */
+
+.uiux-project-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 2vw, 5.5rem);
+    position: relative;
+    z-index: 5;
+    width: 100%;
+}
+
+/* ── Section Container (Web Applications / Mobile Applications) ── */
+.uiux-app-section {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 4vw, 3.5rem);
+    width: 100%;
+}
+
+.uiux-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.uiux-section-title-row {
+    display: inline-flex;
+    align-items: baseline;
+    gap: clamp(0.6rem, 1.5vw, 1rem);
+    flex-wrap: wrap;
+}
+
+.uiux-section-title {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.uiux-section-script {
+    font-family: var(--font-tempting), 'The Nautigal', cursive;
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 1.5;
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+.uiux-section-subtitle {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    font-style: italic;
+    color: var(--color-black-70);
+    margin: 0.5rem 0 0 0;
+}
+
+/* ── Section Cards Grid ──────────────────────────────────── */
+.uiux-section-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3.5rem, 10vw, 7rem);
+    width: 100%;
+}
+
+.uiux-project-card {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2.5rem, 5vw, 5.5rem);
+    align-items: center;
+    position: relative;
+}
+
+/* ── Left: 3D Card Interactive Preview Wrap ───────────────── */
+.uiux-project-preview-wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+}
+
+/* ============================================================
+   PREVIEW FRAME / WRAP SIZE CONTROLS
+   ============================================================ */
+
+/* ── WEB APPLICATION PREVIEW ─────────────────────────────── */
+.uiux-project-card--web .uiux-project-preview-wrap {
+    width: 100%;
+    max-width: 750px;
+    /* Change web preview size here */
+    margin: 0 auto;
+}
+
+.uiux-project-card--web .uiux-project-preview-frame {
+    width: 100% !important;
+}
+
+
+/* ── MOBILE APPLICATION PREVIEW ──────────────────────────── */
+.uiux-project-card--mobile .uiux-project-preview-wrap {
+    width: 35%;
+    max-width: 360px;
+    /* Change mobile preview size here */
+    margin: 0 auto;
+}
+
+.uiux-project-card--mobile .uiux-project-preview-frame {
+    width: 100% !important;
+}
+
+/* 3D-Card Body Override for Responsive Fluid Layout */
+.uiux-3d-card-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Layer 1: SVG Linear-Gradient Backdrop Shape (Permanently behind image) */
+.uiux-project-backdrop-shape {
+    position: absolute !important;
+    width: 108% !important;
+    height: 110% !important;
+    bottom: -18px !important;
+    right: -16px !important;
+    z-index: 1 !important;
+    pointer-events: none;
+    backface-visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.uiux-project-backdrop-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 14px 28px rgba(7, 85, 61, 0.25));
+}
+
+/* Layer 2: Main Thumbnail Preview Frame with 3D Depth (Permanently on top) */
+.uiux-project-preview-frame {
+    position: relative !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+    display: block;
+    text-decoration: none;
+    backface-visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+}
+
+.uiux-project-preview-wrap:hover .uiux-project-preview-frame {
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.32);
+}
+
+.uiux-project-preview-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ── Mobile Project Card Modifiers (Portrait App UI) ──────── */
+.uiux-project-card--mobile .uiux-3d-card-body {
+    max-width: 320px !important;
+    margin: 0 auto;
+}
+
+.uiux-project-card--mobile .uiux-project-preview-frame {
+    max-width: 320px !important;
+    border-radius: 22px;
+}
+
+.uiux-project-card--mobile .uiux-project-backdrop-shape {
+    width: 108% !important;
+    height: 106% !important;
+    bottom: -16px !important;
+    right: -14px !important;
+}
+
+/* ── Right: Project Title, Description & Action Link ───────── */
+.uiux-project-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.uiux-project-title {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: clamp(2rem, 2.6vw, 3.125rem);
+    font-weight: 900;
+    color: #000000;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin: 0 0 1.25rem 0;
+}
+
+.uiux-project-title a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.25s ease;
+}
+
+.uiux-project-title a:hover {
+    color: var(--color-primary, #07553D);
+}
+
+
+.uiux-project-desc-heading {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.2;
+    margin: 0 0 0.65rem 0;
+}
+
+.uiux-project-desc-text {
+    font-family: var(--font-alegreya), 'Alegreya', serif;
+    font-size: clamp(1.1rem, 1.65vw, 1.35rem);
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--color-primary);
+}
+
+.uiux-project-action {
+    margin-top: 1rem;
+}
+
+.uiux-view-details-link {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--color-gold-dark, #987400);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.uiux-view-details-link:hover {
+    color: var(--color-primary, #07553D);
+    transform: translateX(4px);
+}
+
+/* ── Sections Divider ────────────────────────────────────── */
+.uiux-sections-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+    margin: clamp(2rem, 4vw, 3.5rem) 0;
+    box-sizing: border-box;
+}
+
+.uiux-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.45) 20%, rgba(212, 175, 55, 0.45) 80%, transparent);
+}
+
+.uiux-divider-accent-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.uiux-divider-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--color-gold-dark, #987400);
+    opacity: 0.75;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .uiux-project-card {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .uiux-project-card--mobile .uiux-project-preview-wrap {
+        width: 50%;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+    .uiux-project-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .uiux-project-card--web .uiux-project-preview-frame {
+        width: 92% !important;
+    }
+
+    .uiux-project-card--mobile .uiux-project-preview-wrap {
+        width: 50%;
+    }
+
+    .uiux-project-backdrop-shape {
+        width: 100% !important;
+        height: 110% !important;
+        bottom: -10px !important;
+        right: 4px !important;
+    }
+
+    .uiux-project-card--mobile .uiux-project-backdrop-shape {
+        width: 106% !important;
+        height: 104% !important;
+        bottom: -10px !important;
+        right: -8px !important;
+    }
+}

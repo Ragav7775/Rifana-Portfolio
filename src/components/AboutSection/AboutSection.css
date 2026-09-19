@@ -1,0 +1,951 @@
+/* ============================================================
+   AboutSection.css — High-Fidelity UI & 3D Polygon Reveal Animation
+   ============================================================ */
+
+.about-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg, #fff6d3);
+  padding: clamp(3rem, 10vw, 8em) clamp(1.25rem, 6vw, 5rem) clamp(5rem, 4vw, 8rem);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: flex-start;
+  position: relative;
+}
+
+/* ── Left Content Column ────────────────────────────────── */
+.about-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+/* "HELLO!" Main Heading */
+.about-heading-hello {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(4rem, 6vw, 120px);
+  font-weight: 700;
+  font-style: normal;
+  color: #07553D;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0 0 0.4rem 0;
+}
+
+/* "Gentle Ladies & Gentlemen," */
+.about-subheading-gentle {
+  font-family: var(--font-unna), 'Unna', serif;
+  font-size: clamp(1.75rem, 3vw, 50px);
+  font-style: italic;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.15;
+  text-transform: capitalize;
+  margin: 0 0 1.75rem 0;
+}
+
+/* "I am Rifana." Sparkles & Staging Container */
+.about-subheading-rifana {
+  font-family: var(--font-unna), 'Unna', serif;
+  font-size: clamp(1.75rem, 3.4vw, 50px);
+  font-style: italic;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.15;
+  margin: 0 0 1.5rem 0;
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  text-align: left;
+}
+
+.about-subheading-rifana-staging {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  width: auto !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.about-subheading-rifana-text {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-style: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  text-align: left !important;
+  letter-spacing: inherit !important;
+}
+
+
+/* Body Text Block */
+.about-body-text,
+.about-body-quote {
+  font-family: var(--font-alegreya), 'Alegreya', serif;
+  font-size: clamp(1.3rem, 1.2vw, 30px);
+  font-weight: 500;
+  font-style: normal;
+  color: #07553D;
+  text-align: justify;
+  line-height: 1.34;
+  text-transform: capitalize;
+  margin: 0 0 1.5rem 0;
+}
+
+/* ── "About Me" Handwritten Annotation ──────────────────── */
+.about-annotation-aboutme {
+  position: absolute;
+  top: 15%;
+  right: -5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-annotation-aboutme-text {
+  font-family: var(--font-nautigal), 'The Nautigal', cursive;
+  font-size: clamp(1.5rem, 2vw, 40px);
+  font-weight: 700;
+  font-style: normal;
+  color: #07553D;
+  line-height: 1;
+  text-transform: capitalize;
+  white-space: nowrap;
+  transform: rotate(-3deg);
+  margin-bottom: -4px;
+}
+
+.about-annotation-aboutme-arrow {
+  height: auto;
+  position: absolute;
+}
+
+
+/* ============================================================
+   RIGHT IMAGE COLUMN
+   ============================================================ */
+
+.about-image-column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 30%;
+  overflow: visible;
+}
+
+/* ── "It's Me" Handwritten Annotation ───────────────────── */
+.about-annotation-itsme {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+  user-select: none;
+  margin-right: 12px;
+}
+
+.about-annotation-itsme-text {
+  font-family: var(--font-nautigal), 'The Nautigal', cursive;
+  font-size: clamp(1.5rem, 2vw, 40px);
+  font-weight: 700;
+  font-style: normal;
+  color: #07553D;
+  line-height: 1;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.about-annotation-itsme-arrow {
+  height: auto;
+  position: absolute;
+}
+
+
+/* ============================================================
+   3D CARD
+   ============================================================ */
+
+.about-3d-card-container {
+  width: 80%;
+  max-width: 440px;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.about-3d-card {
+  width: 100%;
+  max-width: 440px;
+  margin: 0;
+  overflow: visible !important;
+}
+
+/*
+   Locked during reveal.
+   This prevents the 3D hover interaction from interfering
+   with the polygon animation.
+*/
+.about-3d-card--locked {
+  pointer-events: none;
+}
+
+/*
+   Enabled only after polygon animation finishes.
+*/
+.about-3d-card--active {
+  pointer-events: auto;
+}
+
+.about-3d-card-body {
+  width: 100%;
+  max-width: 440px;
+  height: auto !important;
+  transform-style: preserve-3d;
+  overflow: visible !important;
+  background: transparent;
+}
+
+
+/* ============================================================
+   IMAGE SCENE
+   ============================================================ */
+
+.about-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 9 / 16;
+
+  overflow: visible;
+
+  transform-style: preserve-3d;
+  perspective: 1200px;
+
+  /*
+     =========================================================
+     TOP POLYGON POSITIONS
+     =========================================================
+
+     Initial:
+     The polygon starts exactly at the image center.
+
+     Junction 1:
+     First destination.
+
+     Junction 2:
+     Second destination.
+
+     Final:
+     Final resting position.
+
+     Change ONLY these values to control the animation.
+     =========================================================
+  */
+
+  --top-initial-x: 0px;
+  --top-initial-y: 0px;
+
+  --top-junction1-x: 0px;
+  --top-junction1-y: -135%;
+
+  --top-junction2-x: -5%;
+  --top-junction2-y: -135%;
+
+  --top-final-x: -5%;
+  --top-final-y: -135%;
+
+
+  /*
+     =========================================================
+     BOTTOM POLYGON POSITIONS
+     =========================================================
+  */
+
+  --bottom-initial-x: 0px;
+  --bottom-initial-y: 0px;
+
+  --bottom-junction1-x: 0px;
+  --bottom-junction1-y: 100%;
+
+  --bottom-junction2-x: -4%;
+  --bottom-junction2-y: 100%;
+
+  --bottom-final-x: -4%;
+  --bottom-final-y: 100%;
+}
+
+
+/* ============================================================
+   PHOTO
+   ============================================================ */
+
+.about-photo-frame {
+  position: relative;
+
+  width: 90%;
+  height: 90%;
+
+  border: 3px solid #000000;
+  background-color: #e5deb8;
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  /*
+     Photo is always physically behind the polygons initially.
+  */
+  z-index: 2;
+
+  transform:
+    translate3d(0, 0, 10px);
+
+  transform-style: preserve-3d;
+
+  /*
+     The image begins hidden by a narrow diagonal opening.
+     The polygons visually pull this mask apart.
+  */
+  clip-path: polygon(50% 50%,
+      50% 50%,
+      50% 50%,
+      50% 50%);
+
+  will-change:
+    transform,
+    clip-path,
+    box-shadow;
+}
+
+.about-photo-img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center top;
+
+  display: block;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   POLYGONS
+   ============================================================ */
+
+.about-polygon {
+  position: absolute;
+
+  display: block;
+
+  pointer-events: none;
+
+  transform-style: preserve-3d;
+
+  will-change:
+    transform,
+    z-index;
+
+  transform-origin: center center;
+}
+
+
+/* ============================================================
+   TOP POLYGON
+   ============================================================ */
+
+.about-polygon-top {
+  width: 108%;
+  height: auto;
+  max-width: 480px;
+
+  /*
+     The actual left/top position is the center of the image.
+  */
+  left: 50%;
+  top: 50%;
+
+  z-index: 4;
+
+  transform:
+    translate3d(calc(-50% + var(--top-initial-x)),
+      calc(-50% + var(--top-initial-y)),
+      40px);
+}
+
+
+/* ============================================================
+   BOTTOM POLYGON
+   ============================================================ */
+
+.about-polygon-bottom {
+  width: 108%;
+  height: auto;
+  max-width: 485px;
+
+  left: 50%;
+  top: 50%;
+
+  z-index: 4;
+
+  transform:
+    translate3d(calc(-50% + var(--bottom-initial-x)),
+      calc(-50% + var(--bottom-initial-y)),
+      40px);
+}
+
+
+/* ============================================================
+   START REVEAL
+   ============================================================ */
+
+.about-image-wrapper--reveal .about-polygon-top {
+  animation:
+    about-top-polygon-reveal 3.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.about-image-wrapper--reveal .about-polygon-bottom {
+  animation:
+    about-bottom-polygon-reveal 3.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.about-image-wrapper--reveal .about-photo-frame {
+  animation:
+    about-photo-reveal 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+
+/* ============================================================
+   TOP POLYGON TIMELINE
+
+   0%       = INITIAL
+   25%      = JUNCTION 1
+   50%      = JUNCTION 2
+   55%      = LOWER Z-INDEX
+   100%     = FINAL
+   ============================================================ */
+
+@keyframes about-top-polygon-reveal {
+
+  0% {
+    transform:
+      translate3d(calc(-50% + var(--top-initial-x)),
+        calc(-50% + var(--top-initial-y)),
+        40px);
+
+    z-index: 4;
+  }
+
+  /*
+     INITIAL -> JUNCTION 1
+
+     Moves upward.
+  */
+  25% {
+    transform:
+      translate3d(calc(-50% + var(--top-junction1-x)),
+        calc(-50% + var(--top-junction1-y)),
+        40px);
+
+    z-index: 4;
+  }
+
+  /*
+     JUNCTION 1 -> JUNCTION 2
+
+     Continues upward.
+  */
+  50% {
+    transform:
+      translate3d(calc(-50% + var(--top-junction2-x)),
+        calc(-50% + var(--top-junction2-y)),
+        40px);
+
+    z-index: 4;
+  }
+
+  /*
+     Polygon moves behind the photograph.
+  */
+  55% {
+    transform:
+      translate3d(calc(-50% + var(--top-junction2-x)),
+        calc(-50% + var(--top-junction2-y)),
+        -20px);
+
+    z-index: 1;
+  }
+
+  /*
+     JUNCTION 2 -> FINAL
+  */
+  100% {
+    transform:
+      translate3d(calc(-50% + var(--top-final-x)),
+        calc(-50% + var(--top-final-y)),
+        -20px);
+
+    z-index: 1;
+  }
+}
+
+
+/* ============================================================
+   BOTTOM POLYGON TIMELINE
+   ============================================================ */
+
+@keyframes about-bottom-polygon-reveal {
+
+  0% {
+    transform:
+      translate3d(calc(-50% + var(--bottom-initial-x)),
+        calc(-50% + var(--bottom-initial-y)),
+        40px);
+
+    z-index: 4;
+  }
+
+  /*
+     INITIAL -> JUNCTION 1
+
+     Moves downward.
+  */
+  25% {
+    transform:
+      translate3d(calc(-50% + var(--bottom-junction1-x)),
+        calc(-50% + var(--bottom-junction1-y)),
+        40px);
+
+    z-index: 4;
+  }
+
+  /*
+     JUNCTION 1 -> JUNCTION 2
+  */
+  50% {
+    transform:
+      translate3d(calc(-50% + var(--bottom-junction2-x)),
+        calc(-50% + var(--bottom-junction2-y)),
+        40px);
+
+    z-index: 4;
+  }
+
+  /*
+     Move behind photograph.
+  */
+  55% {
+    transform:
+      translate3d(calc(-50% + var(--bottom-junction2-x)),
+        calc(-50% + var(--bottom-junction2-y)),
+        -20px);
+
+    z-index: 1;
+  }
+
+  /*
+     JUNCTION 2 -> FINAL
+  */
+  100% {
+    transform:
+      translate3d(calc(-50% + var(--bottom-final-x)),
+        calc(-50% + var(--bottom-final-y)),
+        -20px);
+
+    z-index: 1;
+  }
+}
+
+
+/* ============================================================
+   DIAGONAL IMAGE REVEAL
+
+   The photograph starts as a tiny center opening.
+
+   As the polygons move apart, the diagonal opening expands.
+   ============================================================ */
+
+@keyframes about-photo-reveal {
+
+  0% {
+    /* clip-path: polygon(50% 50%,
+        50% 50%,
+        50% 50%,
+        50% 50%); */
+    /* clip-path: polygon(0 50%, 100% 50%, 100% 50%, 100% 50%, 0 50%, 0 50%); */
+    /* clip-path: polygon(0 75%, 100% 25%, 100% 25%, 100% 25%, 0 75%, 0 75%); */
+    clip-path: polygon(0 65%, 100% 35%, 100% 35%, 100% 35%, 0 65%, 0 65%);
+
+
+    transform:
+      translate3d(0, 0, 5px) scale(0.97);
+
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  /*
+     First reveal as polygons leave the center.
+  */
+  /* 25% { */
+  /* clip-path: polygon(0% 50%,
+        100% 30%,
+        100% 40%,
+        0% 60%); */
+  /* clip-path: polygon(0 45%, 100% 30%, 100% 35%, 100% 40%, 0 55%, 0 50%); */
+  /* clip-path: polygon(0 60%, 100% 10%, 100% 25%, 100% 40%, 0 90%, 0 75%);
+
+    transform:
+      translate3d(0, 0, 8px) scale(0.985);
+
+    box-shadow:
+      0 8px 20px rgba(0, 0, 0, 0.08);
+  } */
+
+  /*
+     Large diagonal reveal at Junction 2.
+  */
+  /* 50% {
+    clip-path: polygon(0 30%, 100% 10%, 99% 70%, 0 90%);
+
+    transform:
+      translate3d(0, 0, 14px) scale(1);
+
+    box-shadow:
+      0 14px 30px rgba(7, 85, 61, 0.14);
+  } */
+
+  /*
+     Fully reveal image while polygons move behind it.
+  */
+  /* 75% { */
+  /* clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); */
+  /* clip-path: polygon(0 15%, 100% 0, 100% 0, 100% 85%, 0 100%, 0 100%); */
+  /* clip-path: polygon(0 15%, 65% 0, 100% 0, 100% 85%, 35% 100%, 0 100%); */
+  /* clip-path: polygon(0 15%, 100% 0, 100% 40%, 100% 85%, 0 100%, 0 60%);
+
+    transform:
+      translate3d(0, 0, 20px) scale(1);
+
+    box-shadow:
+      0 16px 36px rgba(7, 85, 61, 0.18);
+  } */
+
+  100% {
+    /* clip-path: polygon(0% 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%); */
+    /* clip-path: polygon(0 0, 0 0, 100% 0, 100% 100%, 100% 100%, 0 100%); */
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 50%);
+
+
+    transform:
+      translate3d(0, 0, 25px) scale(1);
+
+    box-shadow:
+      0 10px 28px rgba(0, 0, 0, 0.14);
+  }
+}
+
+
+/* ============================================================
+   FINAL LOCKED STATE
+
+   These values correspond exactly to the --final-x/y values.
+   ============================================================ */
+
+.about-image-wrapper--revealed .about-polygon-top {
+  animation: none;
+
+  transform:
+    translate3d(calc(-50% + var(--top-final-x)),
+      calc(-50% + var(--top-final-y)),
+      -20px);
+
+  z-index: 1;
+}
+
+.about-image-wrapper--revealed .about-polygon-bottom {
+  animation: none;
+
+  transform:
+    translate3d(calc(-50% + var(--bottom-final-x)),
+      calc(-50% + var(--bottom-final-y)),
+      -20px);
+
+  z-index: 1;
+}
+
+.about-image-wrapper--revealed .about-photo-frame {
+  animation: none;
+
+  clip-path: polygon(0% 0%,
+      100% 0%,
+      100% 100%,
+      0% 100%);
+
+  transform:
+    translate3d(0, 0, 25px);
+
+  z-index: 2;
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+
+/* ============================================================
+   RESPONSIVE LAYOUT
+   ============================================================ */
+
+
+/* ============================================================
+   LARGE TABLET / SMALL LAPTOP
+   961px – 1120px
+   ============================================================ */
+
+/* ============================================================
+   RESPONSIVE LAYOUT
+   ============================================================ */
+
+/* ============================================================
+   LARGE TABLET / SMALL LAPTOP
+   961px – 1120px
+   ============================================================ */
+
+@media (max-width: 1120px) and (min-width: 961px) {
+
+  .about-annotation-aboutme {
+    top: 12%;
+    right: -5%;
+  }
+
+  .about-image-column {
+    padding-top: 25%;
+  }
+
+  .about-image-wrapper {
+    --top-initial-x: 0px;
+    --top-initial-y: 0px;
+    --top-junction1-x: 0px;
+    --top-junction1-y: -138%;
+    --top-junction2-x: -6%;
+    --top-junction2-y: -138%;
+    --top-final-x: -6%;
+    --top-final-y: -138%;
+
+    --bottom-initial-x: 0px;
+    --bottom-initial-y: 0px;
+    --bottom-junction1-x: 0px;
+    --bottom-junction1-y: 105%;
+    --bottom-junction2-x: -2%;
+    --bottom-junction2-y: 105%;
+    --bottom-final-x: -2%;
+    --bottom-final-y: 105%;
+  }
+}
+
+
+/* ============================================================
+   TABLET
+   601px – 960px
+   ============================================================ */
+
+@media (max-width: 960px) {
+
+  .about-section {
+    padding-top: clamp(3.5rem, 7vw, 5rem);
+    padding-bottom: clamp(3.5rem, 7vw, 5rem);
+    padding-left: clamp(1.5rem, 5vw, 3rem);
+    padding-right: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    width: 100%;
+  }
+
+  .about-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Shared tablet/mobile annotation positioning. */
+  .about-annotation-aboutme {
+    align-self: center;
+    margin: 1.5rem 0 1rem 0;
+    top: 8%;
+    right: 5%;
+  }
+
+  /* Shared tablet/mobile image sizing. */
+  .about-image-column {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding-top: 0;
+  }
+
+  .about-3d-card-container,
+  .about-3d-card,
+  .about-3d-card-body,
+  .about-image-wrapper {
+    width: 90%;
+    max-width: 520px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*
+    These polygon variables are identical from 960px down
+    through 375px, so they are defined once here.
+  */
+  .about-image-wrapper {
+    --top-initial-x: 0px;
+    --top-initial-y: 0px;
+    --top-junction1-x: 0px;
+    --top-junction1-y: -138%;
+    --top-junction2-x: -2%;
+    --top-junction2-y: -138%;
+    --top-final-x: -2%;
+    --top-final-y: -138%;
+
+    --bottom-initial-x: 0px;
+    --bottom-initial-y: 0px;
+    --bottom-junction1-x: 0px;
+    --bottom-junction1-y: 105%;
+    --bottom-junction2-x: 4%;
+    --bottom-junction2-y: 105%;
+    --bottom-final-x: 4%;
+    --bottom-final-y: 105%;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   0px – 600px
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  .about-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .about-container {
+    gap: 3rem;
+  }
+
+  .about-image-column {
+    max-width: 480px;
+  }
+
+  .about-3d-card-container,
+  .about-3d-card,
+  .about-3d-card-body,
+  .about-image-wrapper {
+    max-width: 480px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   375px AND BELOW
+   ============================================================ */
+
+@media (max-width: 375px) {
+
+  .about-section {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .about-container {
+    gap: 2.5rem;
+  }
+
+  .about-image-column {
+    width: 100%;
+  }
+
+  .about-3d-card-container,
+  .about-3d-card,
+  .about-3d-card-body,
+  .about-image-wrapper {
+    width: 100%;
+  }
+
+  .about-annotation-aboutme {
+    top: 6%;
+    right: -5%;
+  }
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+
+  .about-polygon,
+  .about-photo-frame {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .about-polygon-top {
+    transform:
+      translate3d(calc(-50% + var(--top-final-x)),
+        calc(-50% + var(--top-final-y)),
+        -20px) !important;
+
+    z-index: 1 !important;
+  }
+
+  .about-polygon-bottom {
+    transform:
+      translate3d(calc(-50% + var(--bottom-final-x)),
+        calc(-50% + var(--bottom-final-y)),
+        -20px) !important;
+
+    z-index: 1 !important;
+  }
+
+  .about-photo-frame {
+    clip-path: polygon(0% 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%) !important;
+
+    transform:
+      translate3d(0, 0, 20px) !important;
+
+    z-index: 2 !important;
+  }
+}

@@ -1,0 +1,278 @@
+/* ============================================================
+   SkillSection.css
+   High-Fidelity "SKILL Sets" Section Styles
+   ============================================================ */
+
+:root {
+    --skill-section-bg: var(--color-bg, #fff6d3);
+}
+
+/* ── Main Section Container ──────────────────────────────── */
+.skill-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--skill-section-bg);
+    padding: clamp(3rem, 5vw, 6.5rem) clamp(1.25rem, 6vw, 4.5rem) clamp(4rem, 6vw, 7rem);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.skill-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* ── Header Composition: SKILL + Sets ───────────────────── */
+.skill-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* margin-bottom: clamp(1.5rem, 3vw, 2.5rem); */
+    position: absolute;
+    z-index: 5;
+}
+
+.skill-title-group {
+    position: relative;
+    display: inline-flex;
+    user-select: none;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* "SKILL" — Bold uppercase Inter (70px reference) */
+.skill-title-main {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: clamp(2.75rem, 6vw, 4.375rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* "Sets" — Tempting script font (60px reference) */
+.skill-title-script {
+    position: relative;
+    right: -4rem;
+    font-family: var(--font-tempting), 'The Nautigal', cursive;
+    font-size: clamp(3rem, 3.5vw, 6.5rem);
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 1.5;
+    white-space: nowrap;
+    pointer-events: none;
+
+}
+
+/* ── Stage Area: Center Character & Surrounding Avatars ─── */
+.skill-stage-container {
+    position: relative;
+    width: 100%;
+    height: 780px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Centered Anchor Character */
+.skill-character-anchor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-character-frame {
+    position: relative;
+    width: clamp(140px, 16vw, 195px);
+    height: auto;
+    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.08));
+}
+
+.skill-character-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Floating Avatars Coordinate Space Origin (0, 0) at Center */
+.skill-avatars-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+/* Individual Floating Skill Avatar Wrapper */
+.skill-avatar-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: calc(var(--skill-h, 0px) / -2);
+    margin-left: calc(var(--skill-w, 0px) / -2);
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    touch-action: manipulation;
+}
+
+/* shadcn/ui Avatar Root Integration */
+.skill-avatar-root {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+    will-change: transform;
+}
+
+.skill-avatar-wrapper:hover .skill-avatar-root,
+.skill-avatar-wrapper:focus-visible .skill-avatar-root {
+    transform: scale(1.08);
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
+}
+
+.skill-avatar-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    border-radius: 50% !important;
+    display: block !important;
+    border: none;
+    /* background-color: #ffffff; */
+}
+
+.skill-avatar-fallback {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50% !important;
+    font-family: var(--font-inter), sans-serif;
+    font-weight: 700;
+    background-color: #f1ebd0;
+    color: #07553D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Aceternity Animated Tooltip ────────────────────────── */
+.skill-animated-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    /* left: 50%; */
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: rgba(10, 15, 12, 0.94);
+    backdrop-filter: blur(8px);
+    padding: 0.4rem 0.85rem;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    user-select: none;
+}
+
+.skill-tooltip-glow-1 {
+    position: absolute;
+    bottom: -1px;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #10b981, transparent);
+    z-index: 30;
+}
+
+.skill-tooltip-glow-2 {
+    position: absolute;
+    bottom: -1px;
+    left: 35%;
+    width: 30%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+    z-index: 30;
+}
+
+.skill-tooltip-name {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+.skill-tooltip-sub {
+    font-family: var(--font-unna), serif;
+    font-size: 0.75rem;
+    font-style: italic;
+    font-weight: 400;
+    /* color: rgba(255, 255, 255, 0.75); */
+    color: gray;
+    line-height: 1.2;
+    margin-top: 0.15rem;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   RESPONSIVE LAYOUTS
+   ============================================================ */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .skill-stage-container {
+        height: 680px;
+    }
+
+    .skill-character-frame {
+        width: clamp(120px, 15vw, 160px);
+    }
+}
+
+/* Mobile View (< 768px) */
+@media (max-width: 767px) {
+    .skill-section {
+        padding: 1rem;
+    }
+
+    .skill-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .skill-title-script {
+        left: 0.25em;
+        font-size: clamp(2rem, 7.5vw, 2.75rem);
+    }
+
+    .skill-stage-container {
+        height: 580px;
+    }
+
+    .skill-character-frame {
+        width: 120px;
+    }
+}

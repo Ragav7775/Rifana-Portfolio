@@ -1,0 +1,416 @@
+/* ============================================================
+   navbar.css — Coordinated Ancient Scroll Navbar & Sheet
+   ============================================================ */
+
+/* ── Fixed Navbar Overlay ───────────────────────────────── */
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* ── Inner Navbar Row ───────────────────────────────────── */
+.navbar {
+  position: relative;
+  width: 100%;
+  height: clamp(90px, 10vw, 150px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  overflow: visible;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* ── Shared Coordinate Container (Center SVG Bounds) ───── */
+.navbar-center {
+  position: relative;
+  width: min(65vw, 825px);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  margin: 0 auto;
+}
+
+/* ── Center SVG Wrapper with Dynamic Clip Path Reveal ───── */
+.navbar-svg-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  box-sizing: border-box;
+  will-change: clip-path, opacity;
+  clip-path: inset(0% 50% 0% 50%);
+}
+
+.center-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  display: block;
+}
+
+/* ── Nav Links Text Container ───────────────────────────── */
+.navbar-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20%;
+  padding-right: clamp(20px, 5vw, 55px);
+  z-index: 20;
+  pointer-events: auto;
+  user-select: none;
+  opacity: 0;
+  will-change: opacity;
+}
+
+/* ── Desktop Nav Link Item ──────────────────────────────── */
+.nav-text-item {
+  font-family: var(--font-unna), serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--color-bg, #fff6d3);
+  font-size: clamp(0.82rem, 1.25vw, 1.2rem);
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85), 0 0 10px rgba(212, 175, 55, 0.2);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+/* Exactly ONE underline exists across the desktop navbar: .navbar-active-underline-container.
+   Per-link pseudo-element underlines are disabled on default, hover, and active states. */
+.nav-text-item::after,
+.nav-text-item:hover::after,
+.nav-text-item.active::after {
+  display: none !important;
+  content: none !important;
+}
+
+.nav-text-item:hover {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.9), 0 0 20px rgba(212, 175, 55, 0.5), 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.nav-text-item.active {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255, 246, 211, 0.95), 0 0 24px rgba(212, 175, 55, 0.6), 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.nav-text-item:focus-visible {
+  outline: 2px solid var(--color-gold, #d4af37);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Desktop Traveling S/Snake-Shaped Wire Underline Container (NO dot) ── */
+.navbar-active-underline-container {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  height: 16px;
+  pointer-events: none;
+  z-index: 25;
+  transform-origin: center center;
+  will-change: transform, width, opacity;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.navbar-curved-wire-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+}
+
+/* ── Decorative Scroll Ends (Left & Right) ───────────────── */
+/* Initial off-screen transform exists from first render to prevent any reload flash.
+   NOTE: Coordinate positioning (top, left, right, bottom, x, y) is controlled
+   programmatically via `topLeft.position` and `bottomRight.position` in `NavbarConfig.ts`. */
+.navbar-scroll {
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.navbar-scroll-left {
+  display: block;
+}
+
+.navbar-scroll-right {
+  display: block;
+}
+
+.scroll-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* ── Mobile Navbar Wrapper (Fixed Header Bar for Mobile) ─── */
+.navbar-mobile-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* ── Mobile Menu Trigger Button (Hidden When Sheet is Open) ─ */
+.mobile-menu-trigger {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 110;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(7, 85, 61, 0.85);
+  border: 1.5px solid rgba(212, 175, 55, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 10px rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-bg, #fff6d3);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.25s ease, transform 0.2s ease, visibility 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-trigger:hover {
+  background: rgba(7, 85, 61, 0.95);
+  border-color: #d4af37;
+  transform: scale(1.05);
+}
+
+.mobile-menu-trigger:active {
+  transform: scale(0.95);
+}
+
+.mobile-menu-trigger.hidden-when-open {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: scale(0.85);
+}
+
+/* ── 30% Width Mobile Sheet Drawer (Slide in from Right) ─── */
+/* Configurable duration and easing applied to the Sheet's existing animation */
+.mobile-sheet-content {
+  background: rgba(4, 28, 20, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border-left: 1.5px solid rgba(212, 175, 55, 0.4) !important;
+  width: 30% !important;
+  max-width: 30vw !important;
+  min-width: 240px !important;
+  height: 100dvh !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  position: fixed !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 150 !important;
+  animation-duration: var(--mobile-sheet-duration, 0.35s) !important;
+  animation-timing-function: var(--mobile-sheet-easing, cubic-bezier(0.25, 1, 0.5, 1)) !important;
+  transition-duration: var(--mobile-sheet-duration, 0.35s) !important;
+  transition-timing-function: var(--mobile-sheet-easing, cubic-bezier(0.25, 1, 0.5, 1)) !important;
+}
+
+.mobile-sheet-scroll-container {
+  position: relative;
+  margin-top: 25%;
+  width: min(88%, 240px);
+  height: min(90vh, 720px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* Top Scroll Cap in Sheet.
+   NOTE: Coordinate positioning (top, left, right, bottom, x, y) is controlled
+   programmatically via `topLeft.position` in `NavbarConfig.ts`. */
+.mobile-top-scroll-cap {
+  position: absolute;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 48px;
+  z-index: 35;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+}
+
+/* Coordinated Reveal Group: Center Ribbon SVG + Navigation Content */
+.mobile-reveal-group {
+  position: absolute;
+  top: -24px;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: visible;
+  will-change: clip-path;
+  clip-path: inset(0% 0% 100% 0%);
+}
+
+/* Center Ribbon inside Reveal Group */
+.mobile-center-ribbon-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.mobile-center-ribbon-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* Vertical Navigation Items Container inside Reveal Group */
+.mobile-nav-items-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 75%;
+  z-index: 40;
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* Individual Vertical Nav Item with [golden dot] [Text] */
+.mobile-nav-item {
+  position: absolute;
+  font-family: var(--font-unna), serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--color-bg, #fff6d3);
+  font-size: clamp(1.1rem, 4.2vw, 1.65rem);
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 0 12px rgba(212, 175, 55, 0.3);
+  text-decoration: none;
+  padding: 4px 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+  transform-origin: center center;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Golden Dot BEFORE every navigation label */
+.mobile-nav-dot {
+  display: none;
+  width: 6.5px;
+  height: 6.5px;
+  min-width: 6.5px;
+  border-radius: 50%;
+  background: #d4af37;
+  border: 1px solid #fff6d3;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.9), 0 0 10px rgba(255, 246, 211, 0.6);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mobile-nav-item:hover,
+.mobile-nav-item.active {
+  color: #ffffff;
+  text-shadow: 0 0 16px rgba(255, 246, 211, 1), 0 0 28px rgba(212, 175, 55, 0.7), 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.mobile-nav-item.active .mobile-nav-dot {
+  display: inline-block;
+  background: #ffffff;
+  border-color: #d4af37;
+  transform: scale(1.35);
+  box-shadow:
+    0 0 12px rgba(255, 246, 211, 1),
+    0 0 20px rgba(212, 175, 55, 0.95);
+}
+
+.mobile-nav-label {
+  display: inline-block;
+}
+
+/* Bottom Scroll Cap in Sheet (Follows S-curve trajectory down).
+   NOTE: Coordinate positioning (top, left, right, bottom, x, y) is controlled
+   programmatically via `bottomRight.position` in `NavbarConfig.ts`. */
+.mobile-bottom-scroll-cap {
+  position: absolute;
+  width: 60%;
+  height: 48px;
+  z-index: 45;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* ── Accessibility: prefers-reduced-motion ──────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+  .navbar-scroll,
+  .navbar-active-underline-container,
+  .mobile-bottom-scroll-cap,
+  .mobile-menu-trigger,
+  .mobile-sheet-content {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .navbar-svg-wrapper,
+  .mobile-reveal-group {
+    clip-path: inset(0% 0% 0% 0%) !important;
+  }
+
+  .navbar-text,
+  .navbar-active-underline-container {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}

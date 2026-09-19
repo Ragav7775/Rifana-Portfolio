@@ -1,0 +1,478 @@
+/* ============================================================
+   WorkPathSection.css
+   High-Fidelity "My WORK Pathway" Component Styles
+   ============================================================ */
+
+/* ── Main Section Container ──────────────────────────────── */
+.workpath-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-bg, #fff6d3);
+    padding: clamp(2rem, 2vw, 6.5rem) clamp(1.25rem, 6vw, 4.5rem) clamp(4rem, 8vw, 8rem);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.workpath-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ── Header Composition ──────────────────────────────────── */
+.workpath-header {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-start;
+    justify-items: left;
+    justify-content: left;
+    margin-bottom: clamp(1.5rem, 2vw, 4.5rem);
+    position: relative;
+}
+
+.workpath-title-group {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: end;
+    position: relative;
+    justify-items: left;
+    justify-content: left;
+    left: 0;
+    justify-self: left;
+    user-select: none;
+    width: fit-content;
+}
+
+.workpath-title-top-row {
+    display: flex;
+    align-items: center;
+    justify-self: flex-start;
+    position: relative;
+    /* gap: clamp(0.5rem, 1.5vw, 1.25rem); */
+}
+
+/* "My" — Tempting script font */
+.workpath-title-my {
+    font-family: var(--font-tempting), 'Tempting', 'The Nautigal', cursive;
+    font-size: clamp(3rem, 3.5vw, 6.5rem);
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 0.85;
+    transform: rotate(-4deg) translateY(-0.1em);
+    display: inline-block;
+}
+
+/* "WORK" + Illustration wrapper */
+.workpath-title-work-container {
+    position: relative;
+    display: inline-flex;
+    /* flex-direction: column; */
+    align-items: baseline;
+    left: -2%;
+
+}
+
+/* Illustration of Rifana working at desk with laptop */
+.workpath-illustration-wrapper {
+    position: relative;
+    /* top: -85%; */
+    /* right: 5%; */
+    width: clamp(100px, 14vw, 175px);
+    height: auto;
+    pointer-events: none;
+    z-index: 5;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
+
+.workpath-illustration-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* "WORK" — Bold uppercase Inter */
+.workpath-title-work {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: clamp(2.75rem, 6vw, 4.375rem);
+    font-weight: 900;
+    color: #000000;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* "Pathway" — Tempting script font */
+.workpath-title-pathway {
+    font-family: var(--font-tempting), 'Tempting', 'The Nautigal', cursive;
+    font-size: clamp(3rem, 3.5vw, 7.2rem);
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 1.85;
+    transform: rotate(-3deg) translateY(-0.15em);
+    display: inline-block;
+    margin-top: -0.1em;
+}
+
+/* Subtitle — Unna serif italic */
+.workpath-subtitle {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.2rem, 1.8vw, 1.85rem);
+    font-style: italic;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.3;
+    /* margin-top: clamp(0.75rem, 1.5vw, 1.25rem); */
+    text-align: center;
+}
+
+
+/* ============================================================
+   DESKTOP & TABLET LAYOUT (>= 768px)
+   ============================================================ */
+
+.workpath-desktop-view {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.workpath-mobile-view {
+    display: none;
+}
+
+.workpath-desktop-timeline {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── 4-Column Grid Structure ─────────────────────────────── */
+.workpath-columns-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    padding-top: 10px;
+}
+
+/* ── Upper Content Layer ─────────────────────────────────── */
+.workpath-upper-layer {
+    position: relative;
+    z-index: 3;
+}
+
+.workpath-upper-col {
+    padding: 0 clamp(0.75rem, 1.6vw, 1.75rem) clamp(1.5rem, 2.5vw, 3rem);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 220px;
+}
+
+/* Phase Number: "Phase 01" */
+.workpath-phase-num {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 1.6vw, 1.65rem);
+    font-weight: 700;
+    color: var(--color-primary, #07553D);
+    line-height: 1.2;
+    margin: 0 0 0.35rem 0;
+    letter-spacing: -0.01em;
+}
+
+/* Phase Title: "Discover & Understand" */
+.workpath-phase-title {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.15rem, 1.5vw, 1.55rem);
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.85);
+    line-height: 1.25;
+    margin: 0 0 1.25rem 0;
+}
+
+/* Phase Item List (Italic bullets) */
+.workpath-phase-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.workpath-phase-item {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    font-style: italic;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.35;
+    display: flex;
+    align-items: center;
+}
+
+.workpath-bullet {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #000000;
+    margin-right: 0.65rem;
+    flex-shrink: 0;
+}
+
+/* ── SVG Layer (1326 × 472 Geometry) ─────────────────────── */
+.workpath-desktop-svg-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.workpath-desktop-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+/* ── Lower Content Layer ─────────────────────────────────── */
+.workpath-lower-layer {
+    position: relative;
+    z-index: 3;
+    padding: clamp(2rem, 4vw, 4.5rem) 0 clamp(1.5rem, 3vw, 3rem);
+    box-sizing: border-box;
+}
+
+.workpath-lower-col {
+    padding: 1rem clamp(0.75rem, 1.5vw, 1.5rem);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.workpath-phase-desc {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.05rem, 1.3vw, 1.32rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+}
+
+/* ── Vertical Separator Lines (Desktop) ──────────────────── */
+.workpath-grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.workpath-grid-line-col {
+    position: relative;
+    border-left: 1px solid rgba(138, 128, 96, 0.45);
+}
+
+.workpath-grid-line-col:last-child {
+    border-right: 1px solid rgba(138, 128, 96, 0.45);
+}
+
+
+/* ============================================================
+   MOBILE VIEW (< 768px)
+   Continuous Serpentine S-Curve Pathway Matching Sketch
+   ============================================================ */
+
+@media (max-width: 767px) {
+    .workpath-desktop-view {
+        display: none;
+    }
+
+    .workpath-mobile-view {
+        display: block;
+        position: relative;
+        width: 100%;
+        max-width: 580px;
+        margin: 0 auto;
+        overflow-x: hidden;
+    }
+
+    .workpath-section {
+        padding: 2.5rem 0.75rem 2.5rem;
+    }
+
+    .workpath-header {
+        margin-bottom: 2rem;
+    }
+
+    .workpath-illustration-wrapper {
+        top: -75%;
+        right: -5%;
+        width: 95px;
+    }
+
+    /* ── Mobile Vertical Pathway Container ────────────────── */
+    .workpath-mobile-timeline {
+        position: relative;
+        width: 100%;
+        min-height: 1400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 3rem 0;
+        box-sizing: border-box;
+    }
+
+    /* Mobile Background SVG Wide S-curve */
+    .workpath-mobile-svg-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        overflow: visible;
+    }
+
+    .workpath-mobile-svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+
+    /* ── Mobile Phase Row (Alternating Centered 2-column) ─── */
+    .workpath-mobile-row {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        align-items: center;
+        z-index: 2;
+        padding: 1.5rem 0.5rem;
+        box-sizing: border-box;
+        width: 90%;
+    }
+
+    /* Mobile Content (Natural text attached to curve without rigid card boxes) */
+    .workpath-mobile-content {
+        position: relative;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .workpath-mobile-content--left {
+        text-align: right;
+        padding-right: 0.75rem;
+    }
+
+    .workpath-mobile-content--left .workpath-phase-list {
+        align-items: flex-end;
+    }
+
+    .workpath-mobile-content--left .workpath-phase-item {
+        flex-direction: row-reverse;
+    }
+
+    .workpath-mobile-content--left .workpath-bullet {
+        margin-right: 0;
+        margin-left: 0.5rem;
+    }
+
+    .workpath-mobile-content--right {
+        text-align: left;
+        padding-left: 0.75rem;
+    }
+
+    .workpath-mobile-content--upper .workpath-phase-num {
+        font-family: var(--font-inter), 'Inter', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--color-primary, #07553D);
+        line-height: 1.2;
+        margin: 0 0 0.25rem 0;
+    }
+
+    .workpath-mobile-content--upper .workpath-phase-title {
+        font-family: var(--font-unna), 'Unna', serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.85);
+        line-height: 1.25;
+        margin: 0 0 0.65rem 0;
+    }
+
+    .workpath-mobile-content--upper .workpath-phase-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+
+    .workpath-mobile-content--upper .workpath-phase-item {
+        font-family: var(--font-unna), 'Unna', serif;
+        font-size: 0.9rem;
+        font-style: italic;
+        font-weight: 400;
+        color: #000000;
+        line-height: 1.35;
+        display: flex;
+        align-items: center;
+    }
+
+    .workpath-mobile-content--lower .workpath-phase-desc {
+        font-family: var(--font-unna), 'Unna', serif;
+        font-size: 0.85rem;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--color-primary, #07553D);
+        line-height: 1.4;
+        margin: 0;
+    }
+}
+
+/* ── Screen Sizes Polish ─────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .workpath-upper-col {
+        padding: 0 0.75rem 1rem;
+        min-height: 200px;
+    }
+
+    .workpath-phase-num {
+        font-size: 1.15rem;
+    }
+
+    .workpath-phase-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .workpath-phase-item {
+        font-size: 0.95rem;
+    }
+
+    .workpath-phase-desc {
+        font-size: 0.95rem;
+    }
+}

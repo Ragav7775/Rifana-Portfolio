@@ -1,0 +1,397 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: "Tempting";
+  src: url("/assets/Fonts/Tempting-font.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-bg: rgba(255, 246, 211, 1);
+  --color-black-50: rgba(0, 0, 0, 0.5);
+  --color-black-70: rgba(0, 0, 0, 0.7);
+  --color-primary: rgba(7, 85, 61, 1);
+  --color-primary-85: rgba(0, 116, 50, 0.85);
+  --color-primary-dark: rgba(10, 79, 58, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-gold: rgba(212, 175, 55, 1);
+  --color-gold-dark: rgb(152, 116, 0);
+  --color-green-bright: rgba(0, 221, 97, 0.85);
+  --color-black: rgba(0, 0, 0, 1);
+
+  --gradient-gold: linear-gradient(121.06deg,
+      rgba(212, 175, 55, 0.35) 8.54%,
+      rgba(255, 203, 0, 0.35) 51.92%,
+      rgba(152, 116, 0, 0.35) 93.59%);
+
+  --font-inter: 'Inter', sans-serif;
+  --font-tempting: 'Tempting', 'The Nautigal', cursive;
+  --font-unna: 'Unna', serif;
+  --font-alegreya: 'Alegreya', serif;
+  --font-nautigal: 'The Nautigal', cursive;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-black);
+  font-family: var(--font-unna), serif;
+  overflow-x: hidden;
+}
+
+/* Font families */
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-tempting {
+  font-family: var(--font-tempting);
+}
+
+.font-unna {
+  font-family: var(--font-unna);
+}
+
+.font-alegreya {
+  font-family: var(--font-alegreya);
+}
+
+.font-nautigal {
+  font-family: var(--font-nautigal);
+}
+
+/* Typography presets */
+.text-inter-heading {
+  font-family: var(--font-inter);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.text-tempting {
+  font-family: var(--font-tempting);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 32px;
+}
+
+.text-unna {
+  font-family: var(--font-unna);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.text-alegreya {
+  font-family: var(--font-alegreya);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.text-nautigal {
+  font-family: var(--font-nautigal);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-marquee-seamless: marquee-seamless var(--duration, 40s) infinite linear;
+  --animate-marquee-seamless-vertical: marquee-seamless-vertical var(--duration, 40s) infinite linear;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-seamless {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-seamless-vertical {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply font-sans;
+  }
+}
+
+
+/* ============================================================
+   MAIN PAGE LAYOUT
+   ============================================================ */
+
+.main-page {
+  top: 0;
+  margin: 120px 30px;
+}
+
+
+/* Responsive typography: Mobile */
+@media (max-width: 767px) {
+  .main-page {
+    margin: 80px 20px;
+  }
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ONLY THE MOVING THUMB IS VISIBLE
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+
+  /* IMPORTANT:
+     Do NOT use scrollbar-color or scrollbar-width here.
+     They can cause Chromium to render the native controls.
+  */
+}
+
+/* ------------------------------------------------------------
+   SCROLLBAR SIZE
+   ------------------------------------------------------------ */
+
+html::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+/* ------------------------------------------------------------
+   HIDE TRACK
+   ------------------------------------------------------------ */
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+
+/* ------------------------------------------------------------
+   ONLY VISIBLE ELEMENT — THUMB
+   ------------------------------------------------------------ */
+
+html::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 999px;
+  border: none;
+  box-shadow: none;
+}
+
+/* Hover */
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* ------------------------------------------------------------
+   REMOVE TOP/BOTTOM ARROWS
+   ------------------------------------------------------------ */
+
+html::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+  background: transparent;
+}
+
+/* Vertical top arrow */
+html::-webkit-scrollbar-button:vertical:start:decrement {
+  width: 0;
+  height: 0;
+  display: none;
+  background: transparent;
+}
+
+/* Vertical bottom arrow */
+html::-webkit-scrollbar-button:vertical:end:increment {
+  width: 0;
+  height: 0;
+  display: none;
+  background: transparent;
+}
+
+/* Any other increment/decrement buttons */
+html::-webkit-scrollbar-button:vertical:increment,
+html::-webkit-scrollbar-button:vertical:decrement,
+html::-webkit-scrollbar-button:horizontal:increment,
+html::-webkit-scrollbar-button:horizontal:decrement {
+  width: 0;
+  height: 0;
+  display: none;
+  background: transparent;
+}
+
+/* ------------------------------------------------------------
+   REMOVE CORNER
+   ------------------------------------------------------------ */
+
+html::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ------------------------------------------------------------
+   REMOVE RESIZE HANDLE
+   ------------------------------------------------------------ */
+
+html::-webkit-resizer {
+  display: none;
+}

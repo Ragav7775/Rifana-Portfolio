@@ -1,0 +1,132 @@
+/* ============================================================================
+   PRELOADER OVERLAY & COMPONENT STYLING
+   ============================================================================ */
+
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #383838;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.preloader-overlay.preloader-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader-circle {
+  position: relative;
+  width: var(--preloader-circle-w, 150px);
+  height: var(--preloader-circle-h, 150px);
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--preloader-circle-bg, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* Ensure clean clipping on WebKit/Safari */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+
+.preloader-wave-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--preloader-wave-w, 831px);
+  pointer-events: none;
+  z-index: 1;
+  transform-origin: top left;
+  will-change: transform;
+  animation: preloaderFluidWave var(--preloader-duration, 6500ms) linear forwards;
+}
+
+.preloader-wave-svg {
+  display: block;
+  width: 100%;
+  height: var(--preloader-wave-h, 224px);
+}
+
+.preloader-wave-body {
+  width: 100%;
+  height: calc(var(--preloader-circle-h, 300px) + var(--preloader-wave-h, 224px));
+  background: linear-gradient(180deg, #00291D 0%, #001e15 50%, #00120d 100%);
+  margin-top: -1px;
+}
+
+.preloader-text-container {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  font-family: var(--font-tempting), 'The Nautigal', cursive;
+  font-size: var(--preloader-font-size, 1.125rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #000000;
+  animation: preloaderTextColor var(--preloader-duration, 6500ms) ease-in-out forwards;
+  pointer-events: none;
+}
+
+.preloader-loading-label {
+  line-height: 1;
+}
+
+.preloader-dots-icon {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+@keyframes preloaderFluidWave {
+  0% {
+    transform: translate3d(var(--preloader-start-x, 0px), var(--preloader-start-y, 0px), 0);
+  }
+
+  100% {
+    transform: translate3d(var(--preloader-end-x, -681px), var(--preloader-end-y, -74px), 0);
+  }
+}
+
+@keyframes preloaderTextColor {
+  0% {
+    color: #000000;
+  }
+
+  35% {
+    color: #8c8c8c;
+  }
+
+  70% {
+    color: #ffffff;
+  }
+
+  100% {
+    color: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-wave-wrapper {
+    animation-duration: 0.01ms !important;
+  }
+
+  .preloader-text-container {
+    animation: none !important;
+  }
+}

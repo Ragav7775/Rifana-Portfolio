@@ -1,0 +1,456 @@
+/* ============================================================
+   UIUXProjectDetail.css
+   Style 2: Image Badge Trigger → Draggable Gallery Dialog (16:9 Safari / 9:16 iPhone)
+   ============================================================ */
+
+.uiux-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg, #fff6d3);
+    padding: clamp(2.5rem, 5vw, 5.5rem) clamp(1.25rem, 6vw, 4.5rem) clamp(4.5rem, 7vw, 8rem);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.uiux-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 clamp(1.5rem, 4vw, 5rem);
+}
+
+/* ── Back Navigation Link ────────────────────────────────── */
+.uiux-back-nav {
+    margin-bottom: clamp(2.5rem, 3vw, 2.5rem);
+}
+
+.uiux-back-link {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-primary, #07553D);
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-block;
+}
+
+.uiux-back-link:hover {
+    color: var(--color-gold-dark, #987400);
+    transform: translateX(-4px);
+}
+
+/* ── Hero Grid: Title + Intro (Left) & Device Mockup (Right) ── */
+.uiux-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.25fr;
+    gap: clamp(2rem, 3vw, 5rem);
+    align-items: center;
+    margin-bottom: clamp(2rem, 2vw, 6rem);
+}
+
+.uiux-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.uiux-title-group {
+    margin-bottom: 1rem;
+}
+
+.uiux-main-title {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 3.2vw, 4.25rem);
+    font-weight: 900;
+    color: #07553D;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 0 0 1rem 0;
+    flex-direction: column;
+}
+
+.uiux-script-title {
+    font-family: var(--font-tempting), 'The Nautigal', cursive;
+    font-size: clamp(2.25rem, 3.2vw, 3.75rem);
+    font-weight: 400;
+    color: var(--color-primary, #07553D);
+    line-height: 1;
+    text-transform: capitalize;
+    position: relative;
+    left: 70%;
+    z-index: 10;
+}
+
+.uiux-subtitle {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    font-style: italic;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.uiux-summary-block {
+    margin-top: 1rem;
+}
+
+.uiux-summary-text {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.15rem, 1.65vw, 1.4rem);
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.uiux-highlight {
+    color: var(--color-primary, #07553D);
+    font-weight: 700;
+}
+
+/* ── Hero Mockup Container ───────────────────────────────── */
+.uiux-device-wrap {
+    position: relative;
+    width: 105%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uiux-device-wrap--web .uiux-macbook-frame {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    filter: drop-shadow(0 14px 36px rgba(0, 0, 0, 0.16));
+}
+
+.uiux-macbook-svg {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+}
+
+.uiux-device-wrap--mobile .uiux-iphone-frame {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    filter: drop-shadow(0 18px 42px rgba(0, 0, 0, 0.22));
+    display: flex;
+    justify-content: center;
+}
+
+.uiux-iphone-svg {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+}
+
+/* ── Key Features Section ────────────────────────────────── */
+.uiux-features-section {
+    margin-bottom: clamp(4.5rem, 7vw, 7rem);
+    position: relative;
+}
+
+.uiux-features-heading {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.75rem, 2.8vw, 2.35rem);
+    font-style: italic;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.2;
+    margin: 0 0 1.75rem 0;
+    display: inline-block;
+}
+
+.uiux-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 clamp(1rem, 1vw, 5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.uiux-feature-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.uiux-feature-bullet {
+    font-size: 1.25rem;
+    color: #000000;
+    flex-shrink: 0;
+}
+
+.uiux-feature-text {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: clamp(1.1rem, 1.55vw, 1.35rem);
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.45;
+}
+
+/* ── Actions Row: Live Link & Image Badge Trigger ────────── */
+.uiux-actions-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.75rem, 3.5vw, 3.5rem);
+    margin-top: 2.25rem;
+    flex-wrap: wrap;
+}
+
+.uiux-live-link-wrap {
+    margin: 0;
+}
+
+.uiux-live-link-btn {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-gold-dark, #987400);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.uiux-live-link-btn:hover {
+    color: var(--color-primary, #07553D);
+    transform: translateX(4px);
+}
+
+/* Image Badge Alone as Dialog Trigger (No Headers, No Card Border) */
+.uiux-badge-alone-trigger {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    user-select: none;
+}
+
+.uiux-badge-alone-trigger-text {
+    font-family: var(--font-unna), 'Unna', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-primary, #07553D);
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-block;
+}
+
+.uiux-badge-alone-trigger-text:hover {
+    color: var(--color-gold-dark, #987400);
+}
+
+.uiux-badge-alone-trigger:hover {
+    transform: translateY(-2px) scale(1.08);
+}
+
+.uiux-badge-alone-trigger:active {
+    transform: scale(0.96);
+}
+
+/* ============================================================
+   STYLE 2: DRAGGABLE GALLERY DIALOG (MANUAL SIZING: DESKTOP/TABLET/MOBILE)
+   ============================================================ */
+
+/* Desktop Draggable Box (Manual defined dimensions: 1080px × 680px) */
+.uiux-dialog-content {
+    width: var(--uiux-draggable-box-desktop-w, 1080px) !important;
+    max-width: 94vw !important;
+    height: var(--uiux-draggable-box-desktop-h, 680px) !important;
+    max-height: 88vh !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+}
+
+.uiux-canvas-wrap {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    box-sizing: border-box;
+}
+
+.uiux-draggable-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    perspective: 3000px;
+    background-color: var(--color-bg);
+}
+
+/* Draggable Body (Absolute Centered Stack Item - Tight Fit to Content) */
+.uiux-draggable-body {
+    position: absolute !important;
+    inset: 0 !important;
+    margin: auto !important;
+    width: max-content !important;
+    max-width: max-content !important;
+    height: max-content !important;
+    max-height: max-content !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.uiux-draggable-body:active {
+    cursor: grabbing;
+}
+
+/* Web Mockup in Draggable Gallery (16:9 Safari) */
+.uiux-safari-card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.uiux-safari-svg {
+    width: 520px !important;
+    max-width: calc(100vw - 80px);
+    height: auto !important;
+    display: block;
+}
+
+/* Mobile Mockup in Draggable Gallery (iPhone 17 Pro) */
+.uiux-iphone-card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    border-radius: 24px;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.uiux-iphone-svg {
+    display: block;
+    width: 210px !important;
+    max-width: calc(100vw - 80px);
+    height: auto !important;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .uiux-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .uiux-device-wrap {
+        width: 100%;
+    }
+
+    .uiux-actions-row {
+        gap: 2rem;
+    }
+
+    /* Tablet Draggable Box (Manual defined dimensions: 720px × 600px) */
+    .uiux-dialog-content {
+        width: var(--uiux-draggable-box-tablet-w, 720px) !important;
+        max-width: 94vw !important;
+        height: var(--uiux-draggable-box-tablet-h, 600px) !important;
+        max-height: 85vh !important;
+        border-radius: 20px !important;
+    }
+
+    .uiux-safari-svg {
+        width: 420px !important;
+    }
+
+    .uiux-iphone-svg {
+        width: 180px !important;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+    .uiux-page {
+        padding: 3rem 1rem 3.5rem;
+    }
+
+    .uiux-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .uiux-script-title {
+        left: 25%;
+    }
+
+    .uiux-device-wrap {
+        width: 100%;
+    }
+
+    .uiux-macbook-frame {
+        left: 0;
+    }
+
+    .uiux-actions-row {
+        gap: 10px;
+    }
+
+    /* Mobile Draggable Box (Manual defined dimensions: 360px × 560px) */
+    .uiux-dialog-content {
+        width: var(--uiux-draggable-box-mobile-w, 360px) !important;
+        max-width: 94vw !important;
+        height: var(--uiux-draggable-box-mobile-h, 560px) !important;
+        max-height: 85vh !important;
+        border-radius: 16px !important;
+    }
+
+    .uiux-safari-svg {
+        width: 270px !important;
+    }
+
+    .uiux-iphone-svg {
+        width: 140px !important;
+    }
+}
