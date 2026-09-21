@@ -5,7 +5,7 @@ import AwakeInTheWorldImg from "@/assets/Projects/Book/Awake-in-the-world-book-c
 import TheCompleteBookOfSpaceTravelImg from "@/assets/Projects/Book/Complete-book-of-space-travel-book-cover-page-image.jpeg";
 
 
-export interface EditorialProject {
+export interface BookCoverProject {
     id: string;
     slug: string;
     title: string;
@@ -18,7 +18,7 @@ export interface EditorialProject {
     year?: string;
 }
 
-export const BOOK_COVER_PROJECTS: EditorialProject[] = [
+export const BOOK_COVER_PROJECTS: BookCoverProject[] = [
     {
         id: "awake-in-the-world",
         slug: "awake-in-the-world",
@@ -47,6 +47,6 @@ export const BOOK_COVER_PROJECTS: EditorialProject[] = [
     },
 ];
 
-export function getBookCoverProjectBySlug(slug: string): EditorialProject | undefined {
+export function getBookCoverProjectBySlug(slug: string): BookCoverProject | undefined {
     return BOOK_COVER_PROJECTS.find((proj) => proj.slug === slug);
 }

@@ -10,8 +10,20 @@ export type { UIUXProjectListProps } from "./ProjectList/UIUXProjectList";
 export { BrandingLogoList, BrandingList } from "./ProjectList/BrandingLogoList";
 export type { BrandingLogoListProps, BrandingListProps } from "./ProjectList/BrandingLogoList";
 
-export { EditorialProjectList } from "./ProjectList/EditorialProjectList";
-export type { EditorialProjectListProps } from "./ProjectList/EditorialProjectList";
+export { BookCoverList, BOOK_COVER_EXPANDABLE_BOX_CONFIG } from "./ProjectList/BookCoverList";
+export type { BookCoverListProps } from "./ProjectList/BookCoverList";
+
+export {
+    PosterProjectList,
+    POSTER_SUBCATEGORY_ORDER,
+    resolvePosterAspectRatio,
+    STANDEE_EXPANDABLE_BOX_CONFIG,
+    BILLBOARD_EXPANDABLE_BOX_CONFIG,
+    POSTER_EDITS_EXPANDABLE_BOX_CONFIG,
+    getPosterAspectRatioClass,
+    getPosterAspectRatioValue,
+} from "./ProjectList/PosterProjectList";
+export type { PosterProjectListProps } from "./ProjectList/PosterProjectList";
 
 export { SocialMediaList } from "./ProjectList/SocialMediaList";
 export type { SocialMediaListProps } from "./ProjectList/SocialMediaList";
@@ -24,5 +36,6 @@ export type { BrandingProjectDetailProps } from "./Branding/BrandingProjectDetai
 
 export { WorkingOnIt } from "./WorkingOnIt/WorkingOnIt";
 export type { WorkingOnItProps } from "./WorkingOnIt/WorkingOnIt";
+
 
 

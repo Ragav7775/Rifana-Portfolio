@@ -4,9 +4,9 @@ import {
     GenericCategoryPage,
     UIUXProjectList,
     BrandingLogoList,
-    EditorialProjectList,
+    BookCoverList,
+    PosterProjectList,
     SocialMediaList,
-    WorkingOnIt,
 } from "@/components/ProjectSection";
 import {
     getCategoryBySlug,
@@ -16,6 +16,7 @@ import { UIUX_PROJECTS } from "@/data/UIUXProjectData";
 import { LOGO_PROJECTS } from "@/data/LogoProjectData";
 import { BOOK_COVER_PROJECTS } from "@/data/BookCoverProjectData";
 import { BRANDING_PROJECTS } from "@/data/BrandingProjectData";
+import { POSTER_PROJECTS } from "@/data/PosterProjectData";
 import { SOCIAL_MEDIA_PROJECTS } from "@/data/SocialMediaProjectData";
 
 interface CategoryPageProps {
@@ -80,9 +81,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     <UIUXProjectList projects={UIUX_PROJECTS} />
                 )}
 
-                {/* 2. Book Covers: Editorial cover designs exploring typography, composition, and visual storytelling */}
+                {/* 2. Book Covers: Cover designs exploring typography, composition, and visual storytelling */}
                 {category.slug === "book-covers" && (
-                    <EditorialProjectList
+                    <BookCoverList
                         projects={BOOK_COVER_PROJECTS}
                         sectionAriaLabel="Book Cover Projects"
                     />
@@ -104,12 +105,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     />
                 )}
 
-                {/* 5. Poster: Creative poster designs balancing bold typography, imagery, composition, and visual impact */}
+                {/* 5. Poster: Creative Poster, Standee, and Billboard designs with dynamic aspect ratio detection */}
                 {category.slug === "poster" && (
-                    <WorkingOnIt
-                        categoryTitle={category.title}
-                        categorySlug={category.slug}
-                        description={category.slogan}
+                    <PosterProjectList
+                        projects={POSTER_PROJECTS}
                     />
                 )}
 

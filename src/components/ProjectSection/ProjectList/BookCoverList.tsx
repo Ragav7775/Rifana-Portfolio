@@ -12,15 +12,15 @@ import ExpandableCard, {
     getSharedLayoutId,
     getCardIdentifier,
 } from "@/components/ui/expandable-card";
-import { EditorialProject } from "@/data/BookCoverProjectData";
-import "./EditorialProjectList.css";
+import { BookCoverProject } from "@/data/BookCoverProjectData";
+import "./BookCoverList.css";
 
 /**
- * Configurable box parameters for Editorial (Book Cover, Poster, Social Media) expandable cards.
+ * Configurable box parameters for Book Cover expandable cards.
  * Features smooth non-bouncy cubic-bezier easing, responsive sizing,
  * and exact return-to-grid repositioning.
  */
-export const EDITORIAL_EXPANDABLE_BOX_CONFIG: ExpandableBoxResponsiveConfig = {
+export const BOOK_COVER_EXPANDABLE_BOX_CONFIG: ExpandableBoxResponsiveConfig = {
     desktop: {
         width: 680,
         height: 480,
@@ -36,7 +36,6 @@ export const EDITORIAL_EXPANDABLE_BOX_CONFIG: ExpandableBoxResponsiveConfig = {
     tablet: {
         width: 640,
         height: 480,
-        // imageWidth: 220,
         maxWidth: "94vw",
         maxHeight: "88vh",
         top: "50%",
@@ -61,8 +60,8 @@ export const EDITORIAL_EXPANDABLE_BOX_CONFIG: ExpandableBoxResponsiveConfig = {
     },
 };
 
-export interface EditorialProjectListProps {
-    projects: EditorialProject[];
+export interface BookCoverListProps {
+    projects: BookCoverProject[];
     config?: ExpandableCardConfig;
 
     /** Configurable expandable box sizing, coordinates, and offsets */
@@ -85,7 +84,7 @@ export interface EditorialProjectListProps {
     sectionAriaLabel?: string;
 }
 
-export function EditorialProjectList({
+export function BookCoverList({
     projects,
     config,
     expandable_box_config,
@@ -97,8 +96,8 @@ export function EditorialProjectList({
     positionOffsets,
     transition,
     className = "",
-    sectionAriaLabel = "Editorial Projects",
-}: EditorialProjectListProps) {
+    sectionAriaLabel = "Book Cover Projects",
+}: BookCoverListProps) {
     const scopeId = useId();
 
     // Resolve effective transition: smooth cubic-bezier by default, eliminating high-spring jitter
@@ -121,9 +120,9 @@ export function EditorialProjectList({
         config?.expandable_box_config ||
         config?.expandableBoxConfig ||
         config?.expandedBoxConfig ||
-        EDITORIAL_EXPANDABLE_BOX_CONFIG;
+        BOOK_COVER_EXPANDABLE_BOX_CONFIG;
 
-    // Map editorial projects into standard ExpandableCardItem objects (unconditionally declared)
+    // Map book cover projects into standard ExpandableCardItem objects (unconditionally declared)
     const expandableCards: ExpandableCardItem[] = useMemo(() => {
         return (projects || []).map((p) => ({
             id: p.id,
@@ -161,9 +160,9 @@ export function EditorialProjectList({
         }));
     }, [projects]);
 
-    // Fast lookup map from card id to original editorial project
-    const projectMap = useMemo(() => {
-        const map = new Map<string, EditorialProject>();
+    // Fast lookup map from card id to original book cover project
+    const bookCoverMap = useMemo(() => {
+        const map = new Map<string, BookCoverProject>();
         (projects || []).forEach((p) => map.set(p.id, p));
         return map;
     }, [projects]);
@@ -174,7 +173,7 @@ export function EditorialProjectList({
 
     return (
         <section
-            className={`editorial-list-section ${className}`}
+            className={`book-cover-list-section ${className}`}
             aria-label={sectionAriaLabel}
         >
             <ExpandableCard
@@ -189,29 +188,26 @@ export function EditorialProjectList({
                 positionOffsets={positionOffsets}
                 onActiveChange={config?.onActiveChange}
                 renderContainer={(renderTrackCards) => (
-                    <div className="editorial-grid">
+                    <div className="book-cover-grid">
                         {renderTrackCards(0)}
                     </div>
                 )}
                 renderCard={(card, openCard, layoutId, trackIndex, getLayoutId) => {
-                    const originalProject = projectMap.get(card.id || "") || projects[0];
-                    const imageLayoutId = getLayoutId
-                        ? getLayoutId("image", card, trackIndex)
-                        : getSharedLayoutId("image", card, trackIndex, scopeId);
+                    const originalProject = bookCoverMap.get(card.id || "") || projects[0];
                     const titleLayoutId = getLayoutId
                         ? getLayoutId("title", card, trackIndex)
                         : getSharedLayoutId("title", card, trackIndex, scopeId);
 
                     return (
                         <motion.article
-                            key={`editorial-card-${getCardIdentifier(card)}-${trackIndex}-${scopeId}`}
+                            key={`book-cover-card-${getCardIdentifier(card)}-${trackIndex}-${scopeId}`}
                             layout
                             layoutId={layoutId}
                             transition={{
                                 layout: effectiveTransition,
                                 ...effectiveTransition,
                             }}
-                            className="editorial-card"
+                            className="book-cover-card"
                             onClick={() => openCard(card, trackIndex)}
                             tabIndex={0}
                             role="button"
@@ -224,34 +220,34 @@ export function EditorialProjectList({
                             }}
                         >
                             {/* Portrait Artwork Frame (2:3 Aspect Ratio) */}
-                            <div className="editorial-card-media">
+                            <div className="book-cover-card-media">
                                 <img
                                     src={typeof originalProject.coverImage === "string" ? originalProject.coverImage : originalProject.coverImage.src}
                                     alt={`${originalProject.title} artwork`}
-                                    className="editorial-card-img"
+                                    className="book-cover-card-img"
                                 />
                             </div>
 
                             {/* Project Info Block */}
-                            <div className="editorial-card-body">
+                            <div className="book-cover-card-body">
                                 <motion.h3
                                     layoutId={titleLayoutId}
                                     transition={{
                                         layout: effectiveTransition,
                                         ...effectiveTransition,
                                     }}
-                                    className="editorial-card-title"
+                                    className="book-cover-card-title"
                                 >
-                                    <span className="editorial-card-title-btn">
+                                    <span className="book-cover-card-title-btn">
                                         {originalProject.title}
                                     </span>
                                 </motion.h3>
 
-                                <div className="editorial-card-meta">
-                                    <span className="editorial-meta-label">
+                                <div className="book-cover-card-meta">
+                                    <span className="book-cover-meta-label">
                                         {originalProject.metaLabel || "Author :"}
                                     </span>{" "}
-                                    <span className="editorial-meta-value">
+                                    <span className="book-cover-meta-value">
                                         {originalProject.metaValue}
                                     </span>
                                 </div>
@@ -264,4 +260,4 @@ export function EditorialProjectList({
     );
 }
 
-export default EditorialProjectList;
+export default BookCoverList;
